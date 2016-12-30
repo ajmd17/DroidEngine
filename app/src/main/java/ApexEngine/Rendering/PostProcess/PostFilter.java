@@ -5,29 +5,26 @@ import ApexEngine.Rendering.Shader;
 import ApexEngine.Rendering.ShaderProperties;
 import ApexEngine.Rendering.Texture;
 
-public abstract class PostFilter   
-{
+public abstract class PostFilter {
     protected PostShader shader;
     protected Camera cam;
     private boolean saveColorTexture = true;
     protected Texture colorTexture, depthTexture;
-    public PostFilter(String fs_code) {
+
+    public PostFilter(String fs_code) throws Exception {
         this(new PostShader(fs_code));
     }
 
-    public PostFilter(ShaderProperties properties, String fs_code) {
+    public PostFilter(ShaderProperties properties, String fs_code) throws Exception {
         this(new PostShader(properties, fs_code));
     }
 
-    public PostFilter(Shader shader) {
-        if (shader instanceof PostShader)
+    public PostFilter(Shader shader) throws Exception {
+        if (shader instanceof PostShader) {
             this.shader = (PostShader)shader;
-		else
-			try {
-				throw new Exception("Must be of type PostShader!");
-			} catch (Exception e) {
-				e.printStackTrace();
-			} 
+        } else {
+            throw new Exception("Must be of type PostShader!");
+        }
     }
 
     public PostShader getShader() {
@@ -70,9 +67,8 @@ public abstract class PostFilter
         depthTexture = value;
     }
 
-    public abstract void update() ;
-
-    public abstract void end() ;
+    public abstract void update();
+    public abstract void end();
 
 }
 

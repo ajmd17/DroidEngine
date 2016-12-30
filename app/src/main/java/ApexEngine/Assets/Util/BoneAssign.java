@@ -1,10 +1,10 @@
 package ApexEngine.Assets.Util;
 
 
-public class BoneAssign   
-{
+public class BoneAssign {
     int vertIndex, boneIndex;
     float weight;
+
     public int getVertexIndex() {
         return vertIndex;
     }

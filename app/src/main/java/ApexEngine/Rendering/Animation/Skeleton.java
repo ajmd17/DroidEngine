@@ -6,13 +6,10 @@ package ApexEngine.Rendering.Animation;
 
 import java.util.ArrayList;
 
-import ApexEngine.Rendering.Animation.Animation;
-import ApexEngine.Rendering.Animation.Bone;
-
-public class Skeleton   
-{
+public class Skeleton {
     protected ArrayList<Bone> bones = new ArrayList<Bone>();
     protected ArrayList<Animation> animations = new ArrayList<Animation>();
+
     public void addAnimation(Animation anim) {
         animations.add(anim);
     }
@@ -22,13 +19,11 @@ public class Skeleton
     }
 
     public Animation getAnimation(String name) {
-        for (int i = 0;i < animations.size();i++)
-        {
-            if (animations.get(i).getName().equals(name))
-            {
+        for (int i = 0; i < animations.size(); i++) {
+            if (animations.get(i).getName().equals(name)) {
                 return animations.get(i);
             }
-             
+
         }
         return null;
     }
@@ -50,13 +45,11 @@ public class Skeleton
     }
 
     public Bone getBone(String name) {
-        for (int i = 0;i < bones.size();i++)
-        {
-            if (bones.get(i).getName().equals(name))
-            {
+        for (int i = 0; i < bones.size(); i++) {
+            if (bones.get(i).getName().equals(name)) {
                 return bones.get(i);
             }
-             
+
         }
         return null;
     }

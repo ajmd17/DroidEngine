@@ -8,11 +8,11 @@ import ApexEngine.Math.Quaternion;
 import ApexEngine.Math.Vector3f;
 import ApexEngine.Rendering.Camera;
 
-public class PerspectiveCamera  extends Camera 
-{
+public class PerspectiveCamera extends Camera {
     protected Quaternion rotation = new Quaternion();
     protected float fov = 45f, yaw, roll, pitch;
     private Vector3f tmp = new Vector3f();
+
     public PerspectiveCamera() {
         super();
     }

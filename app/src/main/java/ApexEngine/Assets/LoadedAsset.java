@@ -2,11 +2,10 @@ package ApexEngine.Assets;
 
 import java.io.InputStream;
 
-public class LoadedAsset   
-{
+public class LoadedAsset {
     private InputStream data;
     private String filePath;
-    
+
     public InputStream getData() {
         return data;
     }

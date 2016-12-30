@@ -4,23 +4,20 @@
 
 package ApexEngine.Rendering.Animation;
 
-import ApexEngine.Rendering.Animation.Animation;
-import ApexEngine.Rendering.Animation.Skeleton;
 import ApexEngine.Scene.Components.Controller;
 
-public class AnimationController  extends Controller 
-{
-    public enum PlayState
-    {
+public class AnimationController extends Controller {
+    public enum PlayState {
         Playing,
         Stopped,
         Paused
     }
-    public enum LoopMode
-    {
+
+    public enum LoopMode {
         Loop,
         PlayOnce
     }
+
     private float speed = 1.0f;
     private float time = 0f;
     private Animation currentAnim;
@@ -29,169 +26,153 @@ public class AnimationController  extends Controller
     private LoopMode loopMode = LoopMode.Loop;
     private Skeleton skeleton = null;
     private float blend = 0.0f;
-    public AnimationController(Skeleton skeleton)  {
+
+    public AnimationController(Skeleton skeleton) {
         this.skeleton = skeleton;
     }
 
-    public Skeleton getSkeleton()  {
+    public Skeleton getSkeleton() {
         return this.skeleton;
     }
 
-    public void setLoopMode(LoopMode loopMode)  {
+    public void setLoopMode(LoopMode loopMode) {
         this.loopMode = loopMode;
     }
 
-    public LoopMode getLoopMode()  {
+    public LoopMode getLoopMode() {
         return loopMode;
     }
 
-    public void setPlayState(PlayState playState)  {
+    public void setPlayState(PlayState playState) {
         this.playState = playState;
-        if (playState == PlayState.Stopped)
-        {
+        if (playState == PlayState.Stopped) {
             resetAnimation();
             clearPose();
         }
-         
+
     }
 
-    public PlayState getPlayState()  {
+    public PlayState getPlayState() {
         return this.playState;
     }
 
-    public void play()  {
+    public void play() {
         setPlayState(PlayState.Playing);
     }
 
-    public void pause()  {
+    public void pause() {
         setPlayState(PlayState.Paused);
     }
 
-    public void stop()  {
+    public void stop() {
         setPlayState(PlayState.Stopped);
     }
 
-    public Animation getCurrentAnimation()  {
+    public Animation getCurrentAnimation() {
         return this.currentAnim;
     }
 
-    public void playAnimation(String name, float speed)  {
-        if (currentAnim == null || !currentAnim.getName().equals(name) || playState != PlayState.Playing || this.speed != speed)
-        {
+    public void playAnimation(String name, float speed) {
+        if (currentAnim == null || !currentAnim.getName().equals(name) || playState != PlayState.Playing || this.speed != speed) {
             resetAnimation();
             setAnimation(skeleton.getAnimations().indexOf(skeleton.getAnimation(name)));
             setSpeed(speed);
             setPlayState(PlayState.Playing);
         }
-         
+
     }
 
-    public void setSpeed(float speed)  {
+    public void setSpeed(float speed) {
         this.speed = speed;
     }
 
-    public void playAnimation(int i, float speed)  {
-        if (i != -1)
-        {
+    public void playAnimation(int i, float speed) {
+        if (i != -1) {
             Animation anim = skeleton.getAnimation(i);
-            playAnimation(anim.getName(),speed);
-        }
-        else
-        {
+            playAnimation(anim.getName(), speed);
+        } else {
             setAnimation(-1);
-        } 
+        }
     }
 
-    public void playAnimation(int i)  {
+    public void playAnimation(int i) {
         playAnimation(i, 1.0f);
     }
 
-    public void playAnimation(String name)  {
+    public void playAnimation(String name) {
         playAnimation(name, 1.0f);
     }
 
-    public void setAnimation(int index)  {
-        if (currentAnim != null)
-        {
+    public void setAnimation(int index) {
+        if (currentAnim != null) {
             if (lastAnim == null)
                 lastAnim = currentAnim;
-            else
-            {
+            else {
                 if (lastAnim != currentAnim)
                     lastAnim = currentAnim;
-                 
-            } 
+
+            }
         }
-         
-        if (index != -1)
-        {
+
+        if (index != -1) {
             currentAnim = skeleton.getAnimation(index);
             resetAnimation();
-        }
-        else
-        {
+        } else {
             clearPose();
-        } 
+        }
     }
 
-    public void applyAnimation()  {
+    public void applyAnimation() {
         if (lastAnim != null)
             this.currentAnim.applyBlend(time, lastAnim, 1.0f - blend);
         else
-            this.currentAnim.apply(time); 
+            this.currentAnim.apply(time);
     }
 
-    private void resetAnimation()  {
+    private void resetAnimation() {
         time = 0f;
         blend = 0.0f;
-        if (currentAnim != null)
-        {
+        if (currentAnim != null) {
             applyAnimation();
         }
-         
+
     }
 
-    public void clearPose()  {
-        for (int i = 0;i < skeleton.getNumBones();i++)
+    public void clearPose() {
+        for (int i = 0; i < skeleton.getNumBones(); i++)
             skeleton.getBone(i).clearPose();
     }
 
-    public void init()  {
+    public void init() {
     }
 
-    public void update()  {
-        if (playState == PlayState.Playing)
-        {
-            if (currentAnim != null)
-            {
+    public void update() {
+        if (playState == PlayState.Playing) {
+            if (currentAnim != null) {
                 if (blend < 1.0f)
                     blend += 0.1f;
                  
                 /* GameTime.GetDeltaTime() */
                 /* GameTime.GetDeltaTime() */
                 time += 0.01f * speed;
-                if (time > currentAnim.getTrackLength())
-                {
+                if (time > currentAnim.getTrackLength()) {
                     time = 0f;
-                    if (loopMode == LoopMode.PlayOnce)
-                    {
+                    if (loopMode == LoopMode.PlayOnce) {
                         stop();
                     }
-                     
+
                 }
-                 
+
                 // if (handler != null)
                 //   handler.OnAnimDone(currentAnim.GetName());
                 // if (handler != null)
                 //    handler.OnAnimLoop(currentAnim.GetName());
                 applyAnimation();
-            }
-            else
-            {
+            } else {
                 setPlayState(PlayState.Stopped);
-            } 
+            }
         }
-         
+
     }
 
 }

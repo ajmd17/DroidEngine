@@ -8,10 +8,9 @@ import ApexEngine.Assets.AssetManager;
 import ApexEngine.Rendering.Shader;
 import ApexEngine.Rendering.ShaderProperties;
 
-public class DepthShader  extends Shader 
-{
+public class DepthShader extends Shader {
     public DepthShader(ShaderProperties properties) {
-        super(properties, (String)AssetManager.load("shaders/depth.vert"), (String)AssetManager.load("shaders/depth.frag"));
+        super(properties, (String) AssetManager.load("shaders/depth.vert"), (String) AssetManager.load("shaders/depth.frag"));
     }
 
 }

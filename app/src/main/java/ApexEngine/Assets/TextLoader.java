@@ -6,50 +6,50 @@ import java.io.InputStreamReader;
 
 public class TextLoader extends AssetLoader {
 
-	private static TextLoader instance;
-	public static TextLoader getInstance()
-	{
-		if (instance == null)
-			instance = new TextLoader();
-		return instance;
-	}
-	
-	public TextLoader() {
-		super("txt");
-	}
-	
-	@Override
-	public Object load(LoadedAsset asset) {
-		BufferedReader br = null;
-		StringBuilder sb = new StringBuilder();
+    private static TextLoader instance;
 
-		String line;
-		try {
+    public static TextLoader getInstance() {
+        if (instance == null)
+            instance = new TextLoader();
+        return instance;
+    }
 
-			br = new BufferedReader(new InputStreamReader(asset.getData()));
-			while ((line = br.readLine()) != null) {
-				sb.append(line + "\n");
-			}
+    public TextLoader() {
+        super("txt");
+    }
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+    @Override
+    public Object load(LoadedAsset asset) {
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
 
-		return sb.toString();
-	}
+        String line;
+        try {
 
-	@Override
-	public void resetLoader() {
-		// TODO Auto-generated method stub
-		
-	}
+            br = new BufferedReader(new InputStreamReader(asset.getData()));
+            while ((line = br.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sb.toString();
+    }
+
+    @Override
+    public void resetLoader() {
+        // TODO Auto-generated method stub
+
+    }
 
 }

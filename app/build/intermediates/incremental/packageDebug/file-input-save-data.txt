@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Dec 29 20:52:47 AST 2016
+#Thu Dec 29 21:27:09 AST 2016
 25.file=C\:\\Users\\andre\\StudioProjects\\apex4j-android\\app\\build\\intermediates\\res\\resources-debug.ap_\\resources.arsc
 25.base=C\:\\Users\\andre\\StudioProjects\\apex4j-android\\app\\build\\intermediates\\res\\resources-debug.ap_
 22.set=JAVA_RESOURCE

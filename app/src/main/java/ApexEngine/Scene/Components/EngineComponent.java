@@ -5,12 +5,9 @@
 package ApexEngine.Scene.Components;
 
 
-public interface EngineComponent   
-{
-    void update()  ;
-
-    void init()  ;
-
+public interface EngineComponent {
+    void update();
+    void init();
 }
 
 

@@ -6,9 +6,9 @@ package ApexEngine.Rendering.Cameras;
 
 import ApexEngine.Rendering.Camera;
 
-public class OrthoCamera  extends Camera 
-{
+public class OrthoCamera extends Camera {
     protected float left, right, bottom, top;
+
     public float getLeft() {
         return left;
     }

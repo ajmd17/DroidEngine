@@ -6,21 +6,19 @@ package ApexEngine.Scene.Components;
 
 import ApexEngine.Scene.GameObject;
 
-public abstract class Controller   
-{
+public abstract class Controller {
     private GameObject gameObject;
-    public GameObject getGameObject()  {
+
+    public GameObject getGameObject() {
         return gameObject;
     }
 
-    public void setGameObject(GameObject value)  {
+    public void setGameObject(GameObject value) {
         gameObject = value;
     }
 
-    public abstract void init()  ;
-
-    public abstract void update()  ;
-
+    public abstract void init();
+    public abstract void update();
 }
 
 

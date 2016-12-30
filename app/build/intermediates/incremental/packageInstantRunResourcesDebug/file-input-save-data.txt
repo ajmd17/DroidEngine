@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Dec 29 20:49:30 AST 2016
+#Thu Dec 29 21:19:38 AST 2016
 1.base=C\:\\Users\\andre\\StudioProjects\\apex4j-android\\app\\build\\intermediates\\res\\resources-debug.ap_
 1.file=C\:\\Users\\andre\\StudioProjects\\apex4j-android\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\main.xml
 2.base=C\:\\Users\\andre\\StudioProjects\\apex4j-android\\app\\build\\intermediates\\res\\resources-debug.ap_

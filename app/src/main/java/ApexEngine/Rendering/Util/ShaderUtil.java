@@ -1,5 +1,8 @@
 package ApexEngine.Rendering.Util;
 
+import java.io.File;
+import java.util.ArrayList;
+
 import ApexEngine.Assets.AssetManager;
 import ApexEngine.Assets.ShaderTextLoader;
 import ApexEngine.Math.Vector2f;
@@ -7,241 +10,174 @@ import ApexEngine.Math.Vector3f;
 import ApexEngine.Math.Vector4f;
 import ApexEngine.Rendering.ShaderProperties;
 
-import java.io.File;
-import java.util.ArrayList;
-
 public class ShaderUtil {
-	public static String getValueString(String varName, Object val) {
-		if (val instanceof Boolean) {
-			boolean bval = (Boolean) val;
-			return (bval ? "true" : "false");
-		} else if (val instanceof Integer) {
-			int ival = (Integer) val;
-			return String.valueOf(ival);
-		} else if (val instanceof Float) {
-			float fval = (Float) val;
-			return String.valueOf(fval);
-		} else if (val instanceof Vector2f) {
-			Vector2f vval = (Vector2f) val;
-			return "vec2(" + vval.x + ", " + vval.y + ")";
-		} else if (val instanceof Vector3f) {
-			Vector3f vval = (Vector3f) val;
-			return "vec3(" + vval.x + ", " + vval.y + ", " + vval.z + ")";
-		} else if (val instanceof Vector4f) {
-			Vector4f vval = (Vector4f) val;
-			return "vec4(" + vval.x + ", " + vval.y + ", " + vval.z + ", " + vval.w + ")";
-		}
+    public static String getValueString(String varName, Object val) {
+        if (val instanceof Boolean) {
+            boolean bval = (Boolean) val;
+            return (bval ? "true" : "false");
+        } else if (val instanceof Integer) {
+            int ival = (Integer) val;
+            return String.valueOf(ival);
+        } else if (val instanceof Float) {
+            float fval = (Float) val;
+            return String.valueOf(fval);
+        } else if (val instanceof Vector2f) {
+            Vector2f vval = (Vector2f) val;
+            return "vec2(" + vval.x + ", " + vval.y + ")";
+        } else if (val instanceof Vector3f) {
+            Vector3f vval = (Vector3f) val;
+            return "vec3(" + vval.x + ", " + vval.y + ", " + vval.z + ")";
+        } else if (val instanceof Vector4f) {
+            Vector4f vval = (Vector4f) val;
+            return "vec4(" + vval.x + ", " + vval.y + ", " + vval.z + ", " + vval.w + ")";
+        }
 
-		return "";
-	}
+        return "";
+    }
 
-	public static boolean compareShader(ShaderProperties a, ShaderProperties b) {
-		if (a.values.size() != b.values.size())
-			return false;
+    public static boolean compareShader(ShaderProperties a, ShaderProperties b) {
+        if (a.values.size() != b.values.size()) {
+            return false;
+        }
 
-		String[] keys_a = (String[]) (a.values.keySet()).toArray();
-		String[] keys_b = (String[]) (b.values.keySet()).toArray();
-		Object[] vals_a = a.values.values().toArray();
-		Object[] vals_b = b.values.values().toArray();
-		for (int i = 0; i < keys_a.length; i++) {
-			if (!keys_a[i].equals(keys_b[i])) {
-				return false;
-			} else {
-				if (!vals_a[i].equals(vals_b[i])) {
-					return false;
-				}
+        String[] keys_a = (String[]) (a.values.keySet()).toArray();
+        String[] keys_b = (String[]) (b.values.keySet()).toArray();
+        Object[] vals_a = a.values.values().toArray();
+        Object[] vals_b = b.values.values().toArray();
 
-			}
-		}
-		return true;
-	}
+        for (int i = 0; i < keys_a.length; i++) {
+            if (!keys_a[i].equals(keys_b[i])) {
+                return false;
+            } else {
+                if (!vals_a[i].equals(vals_b[i])) {
+                    return false;
+                }
+            }
+        }
 
-	/*
-	 * foreach (var pair in a.values) { object value; if
-	 * (b.values.TryGetValue(pair.Key, out value)) { if (value is bool) { if
-	 * (pair.Value is bool) return ((bool)value) == ((bool)pair.Value); else
-	 * return false; } else if (value is int) { if (pair.Value is int) return
-	 * ((int)value) == ((int)pair.Value); else return false; } else if (value is
-	 * float) { if (pair.Value is float) return ((float)value) ==
-	 * ((float)pair.Value); else return false; } else if (value is string) { if
-	 * (pair.Value is string) return ((string)value) == ((string)pair.Value);
-	 * else return false; } } else { return false; } }
-	 */
-	public static String formatShaderVersion(String origCode) {
-		String res = "";
-		String verString = "";
-		String[] lines = origCode.split("\n");
-		for (int i = 0; i < lines.length; i++) {
-			String line = lines[i];
-			if (line.trim().startsWith("#version")) {
-				verString = line.trim();
-				line = "";
-			}
+        return true;
+    }
 
-			if (!lines[i].equals(""))
-				res += line + "\n";
+    public static String formatShaderVersion(String origCode) {
+        String res = "";
+        String verString = "";
+        String[] lines = origCode.split("\n");
+        for (String line : lines) {
+            if (line.trim().startsWith("#version")) {
+                verString = line.trim();
+                line = "";
+            }
 
-		}
-		return verString + "\n" + res;
-	}
+            if (!lines.equals("")) {
+                res += line + "\n";
+            }
+        }
 
-	public static String formatShaderIncludes(String shaderPath, String origCode) {
-		String res = "";
-		String[] lines = origCode.split("\n");
-		for (int i = 0; i < lines.length; i++) {
-			String line = lines[i];
-			if (line.trim().startsWith("#include")) {
-				String path = line.trim().substring("#include ".length());
-				if (path.contains("<") || path.contains(">")) {
-					// internal resource
-					path = path.replace("<", "");
-					path = path.replace(">", "");
-					line = (String)AssetManager.load("shaders/inc/" + path, ShaderTextLoader.getInstance());
-				} else {
-					// external resource
-					path = path.replace("\"", "");
-					String parentPath = new File(shaderPath).getParent();
-					String incPath = parentPath + "\\" + path;
-					line = (String) AssetManager.load(incPath, ShaderTextLoader.getInstance());
-				}
-			}
+        return verString + "\n" + res;
+    }
 
-			if (!lines[i].equals(""))
-				res += line + "\n";
+    public static String formatShaderIncludes(String shaderPath, String origCode) {
+        String res = "";
+        String[] lines = origCode.split("\n");
+        for (String line : lines) {
+            if (line.trim().startsWith("#include")) {
+                String path = line.trim().substring("#include ".length());
+                if (path.contains("<") || path.contains(">")) {
+                    // internal resource
+                    path = path.replace("<", "");
+                    path = path.replace(">", "");
+                    line = (String) AssetManager.load("shaders/inc/" + path, ShaderTextLoader.getInstance());
+                } else {
+                    // external resource
+                    path = path.replace("\"", "");
+                    String parentPath = new File(shaderPath).getParent();
+                    String incPath = parentPath + "\\" + path;
+                    line = (String) AssetManager.load(incPath, ShaderTextLoader.getInstance());
+                }
+            }
 
-		}
-		return res;
-	}
+            if (!line.equals("")) {
+                res += line + "\n";
+            }
 
-	public static String formatShaderProperties(String origCode, ShaderProperties properties) {
-		String res = "";
-		String[] lines = origCode.split("\n");
-		boolean inIfStatement = false;
-		String ifStatementText = "";
-		boolean removing = false;
-		ArrayList<String> ifdefs = new ArrayList<String>();
-		ArrayList<String> ifndefs = new ArrayList<String>();
-		String currentIfDef = "";
-		for (int i = 0; i < lines.length; i++) {
-			String line = lines[i];
-			if (line.trim().startsWith("#ifdef")) {
-				inIfStatement = true;
-				ifStatementText = lines[i].trim().substring(7);
-				ifdefs.add("!" + ifStatementText);
-				currentIfDef = "!" + ifStatementText;
-				boolean remove = !(properties.getBool(ifStatementText));
-				int num_ifdefs = 0;
-				int num_endifs = 0;
-				for (int j = i; j < lines.length; j++) {
-					if (lines[j].trim().startsWith("#ifdef") || lines[j].trim().startsWith("#ifndef")) {
-						num_ifdefs++;
-					} else if (lines[j].trim().startsWith("#endif")) {
-						num_endifs++;
-						if (num_endifs >= num_ifdefs) {
-							break;
-						}
+        }
+        return res;
+    }
 
-					} else {
-						if (remove) {
-							lines[j] = "";
-						}
+    public static String formatShaderProperties(String origCode, ShaderProperties properties) {
+        String res = "";
+        String[] lines = origCode.split("\n");
+        boolean inIfStatement = false;
+        String ifStatementText = "";
+        boolean removing = false;
+        ArrayList<String> ifdefs = new ArrayList<String>();
+        ArrayList<String> ifndefs = new ArrayList<String>();
+        String currentIfDef = "";
+        for (int i = 0; i < lines.length; i++) {
+            String line = lines[i];
+            if (line.trim().startsWith("#ifdef")) {
+                inIfStatement = true;
+                ifStatementText = lines[i].trim().substring(7);
+                ifdefs.add("!" + ifStatementText);
+                currentIfDef = "!" + ifStatementText;
+                boolean remove = !(properties.getBool(ifStatementText));
+                int num_ifdefs = 0;
+                int num_endifs = 0;
+                for (int j = i; j < lines.length; j++) {
+                    if (lines[j].trim().startsWith("#ifdef") || lines[j].trim().startsWith("#ifndef")) {
+                        num_ifdefs++;
+                    } else if (lines[j].trim().startsWith("#endif")) {
+                        num_endifs++;
+                        if (num_endifs >= num_ifdefs) {
+                            break;
+                        }
 
-					}
-				}
-				lines[i] = "";
-			} else if (lines[i].trim().startsWith("#ifndef")) {
-				inIfStatement = true;
-				ifStatementText = lines[i].trim().substring(8);
-				ifdefs.add("!" + ifStatementText);
-				currentIfDef = "!" + ifStatementText;
-				boolean remove = (properties.getBool(ifStatementText));
-				int num_ifdefs = 0;
-				int num_endifs = 0;
-				for (int j = i; j < lines.length; j++) {
-					if (lines[j].trim().startsWith("#ifdef") || lines[j].trim().startsWith("#ifndef")) {
-						num_ifdefs++;
-					} else if (lines[j].trim().startsWith("#endif")) {
-						num_endifs++;
-						if (num_endifs >= num_ifdefs) {
-							break;
-						}
+                    } else {
+                        if (remove) {
+                            lines[j] = "";
+                        }
 
-					} else {
-						if (remove) {
-							lines[j] = "";
-						}
+                    }
+                }
+                lines[i] = "";
+            } else if (lines[i].trim().startsWith("#ifndef")) {
+                inIfStatement = true;
+                ifStatementText = lines[i].trim().substring(8);
+                ifdefs.add("!" + ifStatementText);
+                currentIfDef = "!" + ifStatementText;
+                boolean remove = (properties.getBool(ifStatementText));
+                int num_ifdefs = 0;
+                int num_endifs = 0;
+                for (int j = i; j < lines.length; j++) {
+                    if (lines[j].trim().startsWith("#ifdef") || lines[j].trim().startsWith("#ifndef")) {
+                        num_ifdefs++;
+                    } else if (lines[j].trim().startsWith("#endif")) {
+                        num_endifs++;
+                        if (num_endifs >= num_ifdefs) {
+                            break;
+                        }
 
-					}
-				}
-				lines[i] = "";
-			} else if (lines[i].trim().startsWith("#endif")) {
-				lines[i] = "";
-			}
+                    } else {
+                        if (remove) {
+                            lines[j] = "";
+                        }
 
-			if (!lines[i].equals(""))
-				res += lines[i] + "\n";
+                    }
+                }
+                lines[i] = "";
+            } else if (lines[i].trim().startsWith("#endif")) {
+                lines[i] = "";
+            }
 
-		}
-		for (String val : properties.values.keySet()) {
-			res = res.replaceAll("$" + val, properties.values.get(val).toString());
-		}
-		return res;
-	}
+            if (!lines[i].equals("")) {
+                res += lines[i] + "\n";
+            }
+        }
 
-	// Console.WriteLine(res);
-	public static String formatShaderProperties_old(String origCode, ShaderProperties properties) {
-		String res = "";
-		String[] lines = origCode.split("\n");
-		boolean inIfStatement = false;
-		String ifStatementText = "";
-		boolean removing = false;
-		ArrayList<String> ifdefs = new ArrayList<String>();
-		ArrayList<String> ifndefs = new ArrayList<String>();
-		String currentIfDef = "";
-		for (int i = 0; i < lines.length; i++) {
-			String line = lines[i];
-			if (line.trim().startsWith("#ifdef")) {
-				inIfStatement = true;
-				ifStatementText = lines[i].trim().substring(7);
-				ifdefs.add(ifStatementText);
-				currentIfDef = ifStatementText;
-				if (properties.getBool(ifStatementText) == true)
-					removing = false;
-				else
-					removing = true;
-				lines[i] = "";
-			} else if (lines[i].trim().startsWith("#ifndef")) {
-				inIfStatement = true;
-				ifStatementText = lines[i].trim().substring(8);
-				if (properties.getBool(ifStatementText) == false)
-					removing = false;
-				else
-					removing = true;
-				ifdefs.add("!" + ifStatementText);
-				currentIfDef = "!" + ifStatementText;
-				lines[i] = "";
-			} else if (lines[i].trim().startsWith("#endif")) {
-				if (inIfStatement) {
-					inIfStatement = false;
-					removing = false;
-				}
+        for (String val : properties.values.keySet()) {
+            res = res.replaceAll("$" + val, properties.values.get(val).toString());
+        }
 
-				lines[i] = "";
-			}
-
-			if (inIfStatement && removing) {
-				lines[i] = "";
-			}
-
-			if (!lines[i].equals(""))
-				res += lines[i] + "\n";
-
-		}
-
-		for (String val : properties.values.keySet()) {
-			res = res.replaceAll("$" + val, properties.values.get(val).toString());
-		}
-		return res;
-	}
-
+        return res;
+    }
 }

@@ -5,17 +5,13 @@
 package ApexEngine.Scene.Components;
 
 import ApexEngine.Rendering.RenderManager;
-import ApexEngine.Scene.Components.EngineComponent;
 
-public abstract class RenderComponent   implements EngineComponent
-{
+public abstract class RenderComponent implements EngineComponent {
     public RenderManager renderManager;
-    public abstract void init()  ;
 
-    public abstract void render()  ;
-
-    public abstract void update()  ;
-
+    public abstract void init();
+    public abstract void render();
+    public abstract void update();
 }
 
 

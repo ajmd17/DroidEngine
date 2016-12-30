@@ -1,12 +1,6 @@
 package ApexEngine.Math;
 
-import ApexEngine.Math.MathUtil;
-import ApexEngine.Math.Matrix;
-import ApexEngine.Math.Matrix4f;
-import ApexEngine.Math.Vector3f;
-
-public class Matrix4f  extends Matrix 
-{
+public class Matrix4f extends Matrix {
     private static Matrix4f tmpMat = new Matrix4f();
     private static Matrix4f tmpMat2 = new Matrix4f();
     private static Vector3f tempVec = new Vector3f();
@@ -17,27 +11,28 @@ public class Matrix4f  extends Matrix
     public static final int m00 = 0, m01 = 1, m02 = 2, m03 = 3, m10 = 4, m11 = 5, m12 = 6, m13 = 7, m20 = 8, m21 = 9, m22 = 10, m23 = 11, m30 = 12, m31 = 13, m32 = 14, m33 = 15;
     public float[] values = new float[16];
     private float[] invValues = new float[16];
-    public Matrix4f()  {
+
+    public Matrix4f() {
         this.setToIdentity();
     }
 
-    public Matrix4f(float[] values)  {
+    public Matrix4f(float[] values) {
         this.set(values);
     }
 
-    public Matrix4f(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20, float m21, float m22, float m23, float m30, float m31, float m32, float m33)  {
-        this.set(m00,m01,m02,m03,m10,m11,m12,m13,m20,m21,m22,m23,m30,m31,m32,m33);
+    public Matrix4f(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20, float m21, float m22, float m23, float m30, float m31, float m32, float m33) {
+        this.set(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33);
     }
 
-    public Matrix4f(Matrix other)  {
+    public Matrix4f(Matrix other) {
         super(other);
     }
 
-    public float[] getValues()  {
+    public float[] getValues() {
         return values;
     }
 
-    public float[] getInvertedValues()  {
+    public float[] getInvertedValues() {
         invValues[m00] = values[m00];
         invValues[m01] = values[m10];
         invValues[m02] = values[m20];
@@ -57,7 +52,7 @@ public class Matrix4f  extends Matrix
         return invValues;
     }
 
-    public Matrix4f set(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20, float m21, float m22, float m23, float m30, float m31, float m32, float m33)  {
+    public Matrix4f set(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20, float m21, float m22, float m23, float m30, float m31, float m32, float m33) {
         this.values[Matrix4f.m00] = m00;
         this.values[Matrix4f.m01] = m01;
         this.values[Matrix4f.m02] = m02;
@@ -77,45 +72,38 @@ public class Matrix4f  extends Matrix
         return this;
     }
 
-    public Matrix4f set(Matrix other)  {
-        if (other.getValues().length >= getValues().length)
-        {
-            for (int i = 0;i < getValues().length;i++)
-            {
+    public Matrix4f set(Matrix other) {
+        if (other.getValues().length >= getValues().length) {
+            for (int i = 0; i < getValues().length; i++) {
+                getValues()[i] = other.getValues()[i];
+            }
+        } else if (other.getValues().length < getValues().length) {
+            for (int i = 0; i < other.getValues().length; i++) {
                 getValues()[i] = other.getValues()[i];
             }
         }
-        else if (other.getValues().length < getValues().length)
-        {
-            for (int i = 0;i < other.getValues().length;i++)
-            {
-                getValues()[i] = other.getValues()[i];
-            }
-        }
-          
+
         return this;
     }
 
-    public Matrix4f set(float[] values)  {
-        if (values.length != this.values.length)
-        {
-        	
+    public Matrix4f set(float[] values) {
+        if (values.length != this.values.length) {
+
             try {
-				throw new Exception("Invalid length");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+                throw new Exception("Invalid length");
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
-         
-        for (int i = 0;i < this.values.length;i++)
-        {
+
+        for (int i = 0; i < this.values.length; i++) {
             this.values[i] = values[i];
         }
         return this;
     }
 
-    public Matrix4f multiply(Matrix4f other)  {
+    public Matrix4f multiply(Matrix4f other) {
         Matrix4f res = new Matrix4f();
         float _m00 = this.values[m00] * other.values[m00] + this.values[m10] * other.values[m01] + this.values[m20] * other.values[m02] + this.values[m30] * other.values[m03];
         float _m01 = this.values[m01] * other.values[m00] + this.values[m11] * other.values[m01] + this.values[m21] * other.values[m02] + this.values[m31] * other.values[m03];
@@ -152,7 +140,7 @@ public class Matrix4f  extends Matrix
         return res;
     }
 
-    public Matrix4f multiplyStore(Matrix4f other)  {
+    public Matrix4f multiplyStore(Matrix4f other) {
         float _m00 = this.values[m00] * other.values[m00] + this.values[m10] * other.values[m01] + this.values[m20] * other.values[m02] + this.values[m30] * other.values[m03];
         float _m01 = this.values[m01] * other.values[m00] + this.values[m11] * other.values[m01] + this.values[m21] * other.values[m02] + this.values[m31] * other.values[m03];
         float _m02 = this.values[m02] * other.values[m00] + this.values[m12] * other.values[m01] + this.values[m22] * other.values[m02] + this.values[m32] * other.values[m03];
@@ -188,35 +176,35 @@ public class Matrix4f  extends Matrix
         return this;
     }
 
-    public Matrix4f multiply(float scalar)  {
+    public Matrix4f multiply(float scalar) {
         Matrix4f newMat = new Matrix4f();
-        for (int i = 0;i < values.length;i++)
+        for (int i = 0; i < values.length; i++)
             newMat.values[i] = this.values[i] * scalar;
         return newMat;
     }
 
-    public Matrix4f multiplyStore(float scalar)  {
-        for (int i = 0;i < values.length;i++)
+    public Matrix4f multiplyStore(float scalar) {
+        for (int i = 0; i < values.length; i++)
             values[i] = values[i] * scalar;
         return this;
     }
 
-    public Matrix4f invert()  {
+    public Matrix4f invert() {
         Matrix4f newMat = new Matrix4f(this);
         newMat.invertStore();
         return newMat;
     }
 
-    public Matrix4f invertStore()  {
+    public Matrix4f invertStore() {
         float[] tmp = new float[16];
         float l_det = values[m30] * values[m21] * values[m12] * values[m03] - values[m20] * values[m31] * values[m12] * values[m03] - values[m30] * values[m11] * values[m22] * values[m03] + values[m10] * values[m31] * values[m22] * values[m03] + values[m20] * values[m11] * values[m32] * values[m03] - values[m10] * values[m21] * values[m32] * values[m03] - values[m30] * values[m21] * values[m02] * values[m13] + values[m20] * values[m31] * values[m02] * values[m13] + values[m30] * values[m01] * values[m22] * values[m13] - values[m00] * values[m31] * values[m22] * values[m13] - values[m20] * values[m01] * values[m32] * values[m13] + values[m00] * values[m21] * values[m32] * values[m13] + values[m30] * values[m11] * values[m02] * values[m23] - values[m10] * values[m31] * values[m02] * values[m23] - values[m30] * values[m01] * values[m12] * values[m23] + values[m00] * values[m31] * values[m12] * values[m23] + values[m10] * values[m01] * values[m32] * values[m23] - values[m00] * values[m11] * values[m32] * values[m23] - values[m20] * values[m11] * values[m02] * values[m33] + values[m10] * values[m21] * values[m02] * values[m33] + values[m20] * values[m01] * values[m12] * values[m33] - values[m00] * values[m21] * values[m12] * values[m33] - values[m10] * values[m01] * values[m22] * values[m33] + values[m00] * values[m11] * values[m22] * values[m33];
         if (l_det == 0f) {
-			try {
-				throw new Exception("non-invertible matrix");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+            try {
+                throw new Exception("non-invertible matrix");
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
         float inv_det = 1.0f / l_det;
         tmp[m00] = values[m12] * values[m23] * values[m31] - values[m13] * values[m22] * values[m31] + values[m13] * values[m21] * values[m32] - values[m11] * values[m23] * values[m32] - values[m12] * values[m21] * values[m33] + values[m11] * values[m22] * values[m33];
@@ -251,11 +239,11 @@ public class Matrix4f  extends Matrix
         values[m31] = tmp[m31] * inv_det;
         values[m32] = tmp[m32] * inv_det;
         values[m33] = tmp[m33] * inv_det;
-        tmp = null;
+
         return this;
     }
 
-    public Matrix4f transpose()  {
+    public Matrix4f transpose() {
         Matrix4f res = new Matrix4f();
         res.values[m00] = values[m00];
         res.values[m01] = values[m10];
@@ -276,7 +264,7 @@ public class Matrix4f  extends Matrix
         return res;
     }
 
-    public Matrix4f transposeStore()  {
+    public Matrix4f transposeStore() {
         float[] tmp = new float[16];
         tmp[m00] = values[m00];
         tmp[m01] = values[m10];
@@ -294,12 +282,13 @@ public class Matrix4f  extends Matrix
         tmp[m31] = values[m13];
         tmp[m32] = values[m23];
         tmp[m33] = values[m33];
+
         this.set(tmp);
-        tmp = null;
+
         return this;
     }
 
-    public Matrix4f setToTranslation(Vector3f v)  {
+    public Matrix4f setToTranslation(Vector3f v) {
         this.setToIdentity();
         this.values[Matrix4f.m00] = 1.0f;
         this.values[Matrix4f.m01] = 0.0f;
@@ -320,7 +309,7 @@ public class Matrix4f  extends Matrix
         return this;
     }
 
-    public Matrix4f setToRotation(ApexEngine.Math.Quaternion q)  {
+    public Matrix4f setToRotation(ApexEngine.Math.Quaternion q) {
         this.setToIdentity();
         float xx = q.x * q.x;
         float xy = q.x * q.y;
@@ -350,15 +339,15 @@ public class Matrix4f  extends Matrix
         return this;
     }
 
-    public Matrix4f setToRotation(Vector3f axis, float angle)  {
+    public Matrix4f setToRotation(Vector3f axis, float angle) {
         this.setToIdentity();
         ApexEngine.Math.Quaternion tempQ = new ApexEngine.Math.Quaternion();
-        tempQ.setFromAxis(axis,angle);
+        tempQ.setFromAxis(axis, angle);
         setToRotation(tempQ);
         return this;
     }
 
-    public Matrix4f setToScaling(Vector3f v)  {
+    public Matrix4f setToScaling(Vector3f v) {
         this.setToIdentity();
         this.values[Matrix4f.m00] = v.x;
         this.values[Matrix4f.m01] = 0.0f;
@@ -379,10 +368,10 @@ public class Matrix4f  extends Matrix
         return this;
     }
 
-    public Matrix4f setToProjection(float fov, float w, float h, float n, float f)  {
+    public Matrix4f setToProjection(float fov, float w, float h, float n, float f) {
         this.setToIdentity();
         float ar = w / h;
-        float tanHalfFov = (float)Math.tan(MathUtil.toRadians(fov / 2.0f));
+        float tanHalfFov = (float) Math.tan(MathUtil.toRadians(fov / 2.0f));
         float range = n - f;
         this.values[Matrix4f.m00] = 1.0f / (tanHalfFov * ar);
         this.values[Matrix4f.m01] = 0.0f;
@@ -403,7 +392,7 @@ public class Matrix4f  extends Matrix
         return this;
     }
 
-    public Matrix4f setToIdentity()  {
+    public Matrix4f setToIdentity() {
         this.values[m00] = 1.0f;
         this.values[m01] = 0.0f;
         this.values[m02] = 0.0f;
@@ -423,7 +412,7 @@ public class Matrix4f  extends Matrix
         return this;
     }
 
-    public Matrix4f setToLookAt(Vector3f dir, Vector3f up)  {
+    public Matrix4f setToLookAt(Vector3f dir, Vector3f up) {
         this.setToIdentity();
         l_vez.set(dir);
         l_vez.normalizeStore();
@@ -446,20 +435,20 @@ public class Matrix4f  extends Matrix
         return this;
     }
 
-    public Matrix4f setToLookAt(Vector3f pos, Vector3f target, Vector3f up)  {
+    public Matrix4f setToLookAt(Vector3f pos, Vector3f target, Vector3f up) {
         this.setToIdentity();
         tempVec.set(target);
         tempVec.subtractStore(pos);
         tempVec2.set(pos);
         tempVec2.multiplyStore(-1);
         tmpMat.setToTranslation(tempVec2);
-        tmpMat2.setToLookAt(tempVec,up);
+        tmpMat2.setToLookAt(tempVec, up);
         this.set(tmpMat);
         this.multiplyStore(tmpMat2);
         return this;
     }
 
-    public Matrix4f setToOrtho(float left, float right, float bottom, float top, float near, float far)  {
+    public Matrix4f setToOrtho(float left, float right, float bottom, float top, float near, float far) {
         float x_orth = 2 / (right - left);
         float y_orth = 2 / (top - bottom);
         float z_orth = 2 / (far - near);
@@ -486,34 +475,27 @@ public class Matrix4f  extends Matrix
     }
 
     public boolean equals(Object obj) {
-        try
-        {
+        try {
             if (!(obj instanceof Matrix4f))
                 return false;
-             
-            Matrix4f m_obj = (Matrix4f)obj;
-            for (int i = 0;i < values.length;i++)
-            {
+
+            Matrix4f m_obj = (Matrix4f) obj;
+            for (int i = 0; i < values.length; i++) {
                 if (values[i] != m_obj.values[i])
                     return false;
-                 
+
             }
             return true;
-        }
-        catch (RuntimeException __dummyCatchVar0)
-        {
+        } catch (RuntimeException __dummyCatchVar0) {
             throw __dummyCatchVar0;
-        }
-        catch (Exception __dummyCatchVar0)
-        {
+        } catch (Exception __dummyCatchVar0) {
             throw new RuntimeException(__dummyCatchVar0);
         }
-    
+
     }
 
     public String toString() {
-        try
-        {
+        try {
             String res = "[";
             res += values[Matrix4f.m00] + ", " + values[Matrix4f.m10] + ", " + values[Matrix4f.m20] + ", " + values[Matrix4f.m30] + "\n";
             res += values[Matrix4f.m01] + ", " + values[Matrix4f.m11] + ", " + values[Matrix4f.m21] + ", " + values[Matrix4f.m31] + "\n";
@@ -521,16 +503,12 @@ public class Matrix4f  extends Matrix
             res += values[Matrix4f.m03] + ", " + values[Matrix4f.m13] + ", " + values[Matrix4f.m23] + ", " + values[Matrix4f.m33];
             res += "]";
             return res;
-        }
-        catch (RuntimeException __dummyCatchVar2)
-        {
+        } catch (RuntimeException __dummyCatchVar2) {
             throw __dummyCatchVar2;
-        }
-        catch (Exception __dummyCatchVar2)
-        {
+        } catch (Exception __dummyCatchVar2) {
             throw new RuntimeException(__dummyCatchVar2);
         }
-    
+
     }
 
 }

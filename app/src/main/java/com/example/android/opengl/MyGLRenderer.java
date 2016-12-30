@@ -15,55 +15,55 @@
  */
 package com.example.android.opengl;
 
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
-
-
-import ApexEngine.Game;
-import ApexEngine.TestGame;
-import ApexEngine.AndroidRenderer.GLESRenderer;
-import ApexEngine.Rendering.RenderManager;
 import android.opengl.GLSurfaceView;
 import android.os.SystemClock;
 
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
+
+import ApexEngine.AndroidRenderer.GLESRenderer;
+import ApexEngine.Game;
+import ApexEngine.Rendering.RenderManager;
+import ApexEngine.TestGame;
+
 public class MyGLRenderer implements GLSurfaceView.Renderer {
-	private Game game;
-	private long deltaTime, lastFrameTime;
-	
-	public Game getGame() {
-		return game;
-	}
-	
-	public void setGame(Game game) {
-		this.game = game;
-	}
-	
-	public MyGLRenderer() {
-		game = new TestGame(new GLESRenderer());
-	}
+    private Game game;
+    private long deltaTime, lastFrameTime;
 
-	@Override
-	public void onSurfaceCreated(GL10 unused, EGLConfig config) {
-		game.run();
-	}
+    public Game getGame() {
+        return game;
+    }
 
-	@Override
-	public void onDrawFrame(GL10 unused) {
-		deltaTime = SystemClock.elapsedRealtime() - lastFrameTime;
-		
-		game.updateInternal();
-		game.renderInternal();
-		
+    public void setGame(Game game) {
+        this.game = game;
+    }
 
-		lastFrameTime = SystemClock.elapsedRealtime();
-		
-		game.getEnvironment().setTimePerFrame((float)deltaTime);
-	}
+    public MyGLRenderer() {
+        game = new TestGame(new GLESRenderer());
+    }
 
-	@Override
-	public void onSurfaceChanged(GL10 unused, int width, int height) {
-		RenderManager.getRenderer().viewport(0, 0, width, height);
-		game.getInputManager().SCREEN_HEIGHT = height;
-		game.getInputManager().SCREEN_WIDTH = width;
-	}
+    @Override
+    public void onSurfaceCreated(GL10 unused, EGLConfig config) {
+        game.run();
+    }
+
+    @Override
+    public void onDrawFrame(GL10 unused) {
+        deltaTime = SystemClock.elapsedRealtime() - lastFrameTime;
+
+        game.updateInternal();
+        game.renderInternal();
+
+
+        lastFrameTime = SystemClock.elapsedRealtime();
+
+        game.getEnvironment().setTimePerFrame((float) deltaTime);
+    }
+
+    @Override
+    public void onSurfaceChanged(GL10 unused, int width, int height) {
+        RenderManager.getRenderer().viewport(0, 0, width, height);
+        game.getInputManager().SCREEN_HEIGHT = height;
+        game.getInputManager().SCREEN_WIDTH = width;
+    }
 }

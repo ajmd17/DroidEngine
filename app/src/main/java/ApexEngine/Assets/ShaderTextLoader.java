@@ -8,48 +8,48 @@ import ApexEngine.Rendering.Util.ShaderUtil;
 
 public class ShaderTextLoader extends AssetLoader {
 
-	private static ShaderTextLoader instance;
-	public static ShaderTextLoader getInstance()
-	{
-		if (instance == null)
-			instance = new ShaderTextLoader();
-		return instance;
-	}
-	
-	public ShaderTextLoader() {
-		super("frag", "vert", "geom", "fs", "vs", "gs", "glsl", "gl");
-	}
-	
-	@Override
-	public Object load(LoadedAsset asset) {
-		BufferedReader br = null;
-		StringBuilder sb = new StringBuilder();
+    private static ShaderTextLoader instance;
 
-		String line;
-		try {
+    public static ShaderTextLoader getInstance() {
+        if (instance == null)
+            instance = new ShaderTextLoader();
+        return instance;
+    }
 
-			br = new BufferedReader(new InputStreamReader(asset.getData()));
-			while ((line = br.readLine()) != null) {
-				sb.append(line + "\n");
-			}
+    public ShaderTextLoader() {
+        super("frag", "vert", "geom", "fs", "vs", "gs", "glsl", "gl");
+    }
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+    @Override
+    public Object load(LoadedAsset asset) {
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
 
-		return ShaderUtil.formatShaderIncludes(asset.getFilePath(), sb.toString());
-	}
+        String line;
+        try {
 
-	@Override
-	public void resetLoader() {
-	}
+            br = new BufferedReader(new InputStreamReader(asset.getData()));
+            while ((line = br.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return ShaderUtil.formatShaderIncludes(asset.getFilePath(), sb.toString());
+    }
+
+    @Override
+    public void resetLoader() {
+    }
 
 }

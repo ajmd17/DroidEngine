@@ -6,146 +6,123 @@ package ApexEngine.Rendering;
 
 import java.util.ArrayList;
 
-import ApexEngine.Rendering.VertexAttributes;
+public class VertexAttributes {
+    public static final int POSITIONS = 0,
+            NORMALS = 1,
+            TEXCOORDS0 = 2,
+            TEXCOORDS1 = 3,
+            TANGENTS = 4,
+            BITANGENTS = 5,
+            BONEWEIGHTS = 6,
+            BONEINDICES = 7;
 
-public class VertexAttributes   
-{
-    public static final int POSITIONS = 0, NORMALS = 1, TEXCOORDS0 = 2, TEXCOORDS1 = 3, TANGENTS = 4, BITANGENTS = 5, BONEWEIGHTS = 6, BONEINDICES = 7;
-    protected int posOffset, tc0Offset, tc1Offset, normalOffset, boneIndexOffset, boneWeightOffset, tangentOffset, bitangentOffset;
+    protected int posOffset,
+            tc0Offset,
+            tc1Offset,
+            normalOffset,
+            boneIndexOffset,
+            boneWeightOffset,
+            tangentOffset,
+            bitangentOffset;
+
     private ArrayList<Integer> attribs = new ArrayList<Integer>();
-    public VertexAttributes()  {
+
+    public VertexAttributes() {
     }
 
-    public void setAttribute(int attrib)  {
-        if (!attribs.contains(attrib))
-        {
+    public void setAttribute(int attrib) {
+        if (!attribs.contains(attrib)) {
             attribs.add(attrib);
         }
-         
     }
 
-    public boolean hasAttribute(int attrib)  {
+    public boolean hasAttribute(int attrib) {
         return attribs.contains(attrib);
     }
 
-    public int getPositionOffset()  {
+    public int getPositionOffset() {
         return posOffset;
     }
 
-    public int getTexCoord0Offset()  {
+    public int getTexCoord0Offset() {
         return tc0Offset;
     }
 
-    public int getTexCoord1Offset()  {
+    public int getTexCoord1Offset() {
         return tc1Offset;
     }
 
-    public int getNormalOffset()  {
+    public int getNormalOffset() {
         return normalOffset;
     }
 
-    public int getTangentOffset()  {
+    public int getTangentOffset() {
         return tangentOffset;
     }
 
-    public int getBitangentOffset()  {
+    public int getBitangentOffset() {
         return bitangentOffset;
     }
 
-    public int getBoneWeightOffset()  {
+    public int getBoneWeightOffset() {
         return boneWeightOffset;
     }
 
-    public int getBoneIndexOffset()  {
+    public int getBoneIndexOffset() {
         return boneIndexOffset;
     }
 
-    public void setPositionOffset(int offset)  {
+    public void setPositionOffset(int offset) {
         posOffset = offset;
     }
 
-    public void setTexCoord0Offset(int offset)  {
+    public void setTexCoord0Offset(int offset) {
         tc0Offset = offset;
     }
 
-    public void setTexCoord1Offset(int offset)  {
+    public void setTexCoord1Offset(int offset) {
         tc1Offset = offset;
     }
 
-    public void setNormalOffset(int offset)  {
+    public void setNormalOffset(int offset) {
         normalOffset = offset;
     }
 
-    public void setTangentOffset(int offset)  {
+    public void setTangentOffset(int offset) {
         tangentOffset = offset;
     }
 
-    public void setBitangentOffset(int offset)  {
+    public void setBitangentOffset(int offset) {
         bitangentOffset = offset;
     }
 
-    public void setBoneWeightOffset(int offset)  {
+    public void setBoneWeightOffset(int offset) {
         boneWeightOffset = offset;
     }
 
-    public void setBoneIndexOffset(int offset)  {
+    public void setBoneIndexOffset(int offset) {
         boneIndexOffset = offset;
     }
 
     public String toString() {
-        try
-        {
-            String fstr = "Vertex Attributes:\n";
-            for (int i = 0;i < attribs.size();i++)
-            {
-                int p = attribs.get(i);
-                String str = "";
-                if (p == VertexAttributes.POSITIONS)
-                {
-                    str = "Positions";
-                }
-                else if (p == VertexAttributes.TEXCOORDS0)
-                {
-                    str = "Texture Coordinates (0)";
-                }
-                else if (p == VertexAttributes.TEXCOORDS1)
-                {
-                    str = "Texture Coordinates (1)";
-                }
-                else if (p == VertexAttributes.NORMALS)
-                {
-                    str = "Normals";
-                }
-                else if (p == VertexAttributes.TANGENTS)
-                {
-                    str = "Tangents";
-                }
-                else if (p == VertexAttributes.BITANGENTS)
-                {
-                    str = "Bitangents";
-                }
-                else if (p == VertexAttributes.BONEWEIGHTS)
-                {
-                    str = "Bone Weights";
-                }
-                else if (p == VertexAttributes.BONEINDICES)
-                {
-                    str = "Bone Indices";
-                }
-                        
-                fstr += "\t" + str + "\n";
+        String fstr = "Vertex Attributes:\n";
+        for (Integer attrib : attribs) {
+            String str = "";
+
+            switch (attrib) {
+                case VertexAttributes.POSITIONS: str = "Positions"; break;
+                case VertexAttributes.TEXCOORDS0: str = "Texture Coordinates (0)"; break;
+                case VertexAttributes.TEXCOORDS1: str = "Texture Coordinates (1)"; break;
+                case VertexAttributes.NORMALS: str = "Normals"; break;
+                case VertexAttributes.TANGENTS: str = "Tangents"; break;
+                case VertexAttributes.BITANGENTS: str = "Bitangents"; break;
+                case VertexAttributes.BONEWEIGHTS: str = "Bone Weights"; break;
+                case VertexAttributes.BONEINDICES: str = "Bone Indices"; break;
             }
-            return fstr;
+
+            fstr += "\t" + str + "\n";
         }
-        catch (RuntimeException __dummyCatchVar0)
-        {
-            throw __dummyCatchVar0;
-        }
-        catch (Exception __dummyCatchVar0)
-        {
-            throw new RuntimeException(__dummyCatchVar0);
-        }
-    
+        return fstr;
     }
 
 }

@@ -5,7 +5,7 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="29507006867252"
+    timestamp="46591599675362"
     token="2122325944359414519"
     verifier="FULL_BUILD_REQUESTED" >
 
@@ -17,17 +17,17 @@
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="27" />
+        duration="0" />
     <task
         name="verifier"
-        duration="5" />
+        duration="0" />
 
     <artifact
         location="C:\Users\andre\StudioProjects\apex4j-android\app\build\outputs\apk\app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="29507006867252"
+        timestamp="46591599675362"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\andre\StudioProjects\apex4j-android\app\build\outputs\apk\app-debug.apk"

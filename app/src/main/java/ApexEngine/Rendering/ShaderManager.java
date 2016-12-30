@@ -6,33 +6,29 @@ package ApexEngine.Rendering;
 
 import java.util.ArrayList;
 
-import ApexEngine.Rendering.Shader;
-import ApexEngine.Rendering.ShaderProperties;
-
-public class ShaderManager   
-{
+public class ShaderManager {
     private static ArrayList<Shader> shaders = new ArrayList<Shader>();
-    public static Shader getShader(Class<?> shaderType)  {
-        return getShader(shaderType,new ShaderProperties());
+
+    public static Shader getShader(Class<?> shaderType) {
+        return getShader(shaderType, new ShaderProperties());
     }
 
     public static Shader getShader(Class<?> shaderType, ShaderProperties properties) {
-    	try {
-    		if (Shader.class.isAssignableFrom(shaderType)) {
-	    		for (int i = 0; i < shaders.size(); i++) {
-	                if (shaders.get(i).getClass() == shaderType) {
-	                    if (ApexEngine.Rendering.Util.ShaderUtil.compareShader(shaders.get(i).getProperties(), properties)) {
-							return shaders.get(i);
-						}
-	                }
-	            }
-	    		return (Shader)shaderType.getDeclaredConstructor(ShaderProperties.class).newInstance(properties);
-    		}
-    	} catch (Exception ex) {
-    		ex.printStackTrace();
-    	}
+        try {
+            if (Shader.class.isAssignableFrom(shaderType)) {
+                for (Shader shader : shaders) {
+                    if (shader.getClass() == shaderType && ApexEngine.Rendering.Util.ShaderUtil.compareShader(shader.getProperties(), properties)) {
+                        return shader;
+                    }
+                }
+                // create a new instance
+                return (Shader)shaderType.getDeclaredConstructor(ShaderProperties.class).newInstance(properties);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
-    	return null;
+        return null;
     }
 
 }

@@ -15,20 +15,7 @@
  */
 package com.example.android.opengl;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.ActivityManager;
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
 public class OpenGLES20Activity extends Activity {
@@ -44,13 +31,13 @@ public class OpenGLES20Activity extends Activity {
         mGLView = new MyGLSurfaceView(this);
         setContentView(mGLView);
         ApexEngine.Assets.AssetManager.context = this.getApplicationContext();
-        
-      //  String title = mGLView.getRenderer().getGame().getTitle();
-       // this.getActionBar().setTitle(title);
-        
-        
-      //  ActionBar actionBar = getActionBar();
-      //  actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(110, 110, 110)));
+
+        //  String title = mGLView.getRenderer().getGame().getTitle();
+        // this.getActionBar().setTitle(title);
+
+
+        //  ActionBar actionBar = getActionBar();
+        //  actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(110, 110, 110)));
     }
 
     @Override

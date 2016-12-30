@@ -6,13 +6,13 @@ import ApexEngine.Assets.AssetManager;
 import ApexEngine.Input.InputManager;
 import ApexEngine.Math.Vector3f;
 import ApexEngine.Rendering.Camera;
+import ApexEngine.Rendering.Cameras.DefaultCamera;
 import ApexEngine.Rendering.Environment;
 import ApexEngine.Rendering.RenderManager;
 import ApexEngine.Rendering.Renderer;
 import ApexEngine.Rendering.SpriteRenderer;
-import ApexEngine.Rendering.Cameras.DefaultCamera;
-import ApexEngine.Scene.Node;
 import ApexEngine.Scene.Components.GameComponent;
+import ApexEngine.Scene.Node;
 
 public abstract class Game {
     private InputManager inputManager = new InputManager();
@@ -150,7 +150,6 @@ public abstract class Game {
             cam.updateMatrix();
             rootNode.update(renderManager);
         }
-
     }
 
     public abstract void init();

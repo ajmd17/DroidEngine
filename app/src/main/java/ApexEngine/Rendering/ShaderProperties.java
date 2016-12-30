@@ -4,158 +4,100 @@
 
 package ApexEngine.Rendering;
 
-import ApexEngine.Rendering.ShaderProperties;
 import java.util.HashMap;
 
-public class ShaderProperties   
-{
-    public HashMap<String,Object> values = new HashMap<String,Object>();
-    public ShaderProperties()  {
+public class ShaderProperties {
+    public HashMap<String, Object> values = new HashMap<String, Object>();
+
+    public ShaderProperties() {
     }
 
-    public ShaderProperties(ShaderProperties other)  {
-        for (String str : other.values.keySet())
-        {
+    public ShaderProperties(ShaderProperties other) {
+        for (String str : other.values.keySet()) {
             values.put(str, other.values.get(str));
         }
     }
 
     public boolean equals(Object obj) {
-        try
-        {
-            if (obj == null)
-                return false;
-             
-            if (obj instanceof ShaderProperties)
-            {
-                return equals((ShaderProperties)obj);
-            }
-            else
-            {
-                return false;
-            } 
+        if (obj == null) {
+            return false;
         }
-        catch (RuntimeException __dummyCatchVar0)
-        {
-            throw __dummyCatchVar0;
-        }
-        catch (Exception __dummyCatchVar0)
-        {
-            throw new RuntimeException(__dummyCatchVar0);
-        }
-    
+        return (obj instanceof ShaderProperties) && equals((ShaderProperties) obj);
     }
 
-    public ShaderProperties combine(ShaderProperties other)  {
-        String[] keys_other = (String[])(other.values.keySet()).toArray();
+    public ShaderProperties combine(ShaderProperties other) {
+        String[] keys_other = (String[]) (other.values.keySet()).toArray();
         Object[] vals_other = other.values.values().toArray();
-        for (int i = 0;i < keys_other.length;i++)
-        {
-            if (!values.containsKey(keys_other[i]))
-            {
+
+        for (int i = 0; i < keys_other.length; i++) {
+            if (!values.containsKey(keys_other[i])) {
                 values.put(keys_other[i], vals_other[i]);
             }
-             
+
         }
         return this;
     }
 
     public int hashCode() {
-        try
-        {
-            return super.hashCode();
-        }
-        catch (RuntimeException __dummyCatchVar1)
-        {
-            throw __dummyCatchVar1;
-        }
-        catch (Exception __dummyCatchVar1)
-        {
-            throw new RuntimeException(__dummyCatchVar1);
-        }
-    
+        return super.hashCode();
     }
 
     public boolean equals(ShaderProperties s1) {
-        try
-        {
-            return ApexEngine.Rendering.Util.ShaderUtil.compareShader(this, s1);
-        }
-        catch (RuntimeException __dummyCatchVar2)
-        {
-            throw __dummyCatchVar2;
-        }
-        catch (Exception __dummyCatchVar2)
-        {
-            throw new RuntimeException(__dummyCatchVar2);
-        }
-    
+        return ApexEngine.Rendering.Util.ShaderUtil.compareShader(this, s1);
     }
 
-    public ShaderProperties setProperty(String name, Object val)  {
+    public ShaderProperties setProperty(String name, Object val) {
         values.put(name, val);
         return this;
     }
 
-    public Object getValue(String name)  {
-        if (values.containsKey(name))
-            return values.get(name);
-        else
-            return null; 
+    public Object getValue(String name) {
+        return values.containsKey(name) ? values.get(name) : null;
     }
 
-    public boolean getBool(String name)  {
+    public boolean getBool(String name) {
         Object obj = getValue(name);
-        if (obj instanceof Boolean)
-        {
+        if (obj instanceof Boolean) {
             return (Boolean)obj;
         }
-         
+
         return false;
     }
 
-    public int getInt(String name)  {
+    public int getInt(String name) {
         Object obj = getValue(name);
-        if (obj instanceof Integer)
-        {
+        if (obj instanceof Integer) {
             return (Integer)obj;
         }
-         
+
         return 0;
     }
 
-    public float getFloat(String name)  {
+    public float getFloat(String name) {
         Object obj = getValue(name);
-        if (obj instanceof Float)
-        {
+        if (obj instanceof Float) {
             return (Float)obj;
         }
-         
-        return Float.NaN;
+
+        return 0.0f;
     }
 
     public String toString() {
-        try
-        {
+        try {
             String res = "Shader Properties:\n{\n";
-            String[] keys = (String[])(values.keySet().toArray());
-            Object[] vals = (Object[])(values.values().toArray());
-            for (int i = 0;i < keys.length;i++)
-            {
+            String[] keys = (String[]) (values.keySet().toArray());
+            Object[] vals = (Object[]) (values.values().toArray());
+            for (int i = 0; i < keys.length; i++) {
                 res += "\t" + keys[i] + ": " + vals[i].toString() + "\n";
             }
             res += "}";
             return res;
-        }
-        catch (RuntimeException __dummyCatchVar3)
-        {
+        } catch (RuntimeException __dummyCatchVar3) {
             throw __dummyCatchVar3;
-        }
-        catch (Exception __dummyCatchVar3)
-        {
+        } catch (Exception __dummyCatchVar3) {
             throw new RuntimeException(__dummyCatchVar3);
         }
-    
+
     }
 
 }

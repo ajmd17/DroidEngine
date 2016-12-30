@@ -7,23 +7,13 @@ package ApexEngine.Rendering;
 import java.util.ArrayList;
 
 import ApexEngine.Math.Vector4f;
-import ApexEngine.Rendering.Camera;
-import ApexEngine.Rendering.Environment;
-import ApexEngine.Rendering.Framebuffer;
-import ApexEngine.Rendering.Material;
-//import ApexEngine.Rendering.PostProcess.PostProcessor;
-import ApexEngine.Rendering.Renderer;
-import ApexEngine.Rendering.RenderManager;
-import ApexEngine.Rendering.Shader;
-import ApexEngine.Rendering.ShaderManager;
-import ApexEngine.Rendering.ShaderProperties;
-//import ApexEngine.Rendering.Shaders.DepthShader;
-import ApexEngine.Rendering.Texture;
-import ApexEngine.Rendering.Texture2D;
 import ApexEngine.Rendering.PostProcess.PostProcessor;
 import ApexEngine.Rendering.Shaders.DepthShader;
 import ApexEngine.Scene.Components.RenderComponent;
 import ApexEngine.Scene.Geometry;
+
+//import ApexEngine.Rendering.PostProcess.PostProcessor;
+//import ApexEngine.Rendering.Shaders.DepthShader;
 
 public class RenderManager {
     private static float elapsedTime = 0f;
@@ -50,93 +40,93 @@ public class RenderManager {
         Shadow
     }
 
-    public RenderManager(Renderer renderer, Camera cam)  {
+    public RenderManager(Renderer renderer, Camera cam) {
         RenderManager.renderer = renderer;
         postProcessor = new PostProcessor(this, cam);
-        depthFbo = new Framebuffer(cam.getWidth(),cam.getHeight());
+        depthFbo = new Framebuffer(cam.getWidth(), cam.getHeight());
     }
 
-	public SpriteRenderer getSpriteRenderer() {
-		return spriteRenderer;
-	}
+    public SpriteRenderer getSpriteRenderer() {
+        return spriteRenderer;
+    }
 
-	public void setSpriteRenderer(SpriteRenderer spriteRenderer) {
-		this.spriteRenderer = spriteRenderer;
-	}
+    public void setSpriteRenderer(SpriteRenderer spriteRenderer) {
+        this.spriteRenderer = spriteRenderer;
+    }
 
-    public static Renderer getRenderer()  {
+    public static Renderer getRenderer() {
         return renderer;
     }
 
-    public static void setRenderer(Renderer value)  {
+    public static void setRenderer(Renderer value) {
         renderer = value;
     }
 
-    public Vector4f getBackgroundColor()  {
+    public Vector4f getBackgroundColor() {
         return backgroundColor;
     }
 
-    public void setBackgroundColor(Vector4f value)  {
+    public void setBackgroundColor(Vector4f value) {
         backgroundColor.set(value);
     }
 
-    public PostProcessor getPostProcessor()  {
+    public PostProcessor getPostProcessor() {
         return postProcessor;
     }
 
-    public Texture getDepthTexture()  {
+    public Texture getDepthTexture() {
         return depthTexture;
     }
 
-    public ArrayList<RenderComponent> getRenderComponents()  {
+    public ArrayList<RenderComponent> getRenderComponents() {
         return components;
     }
 
-    public ArrayList<Geometry> getGeometryList()  {
+    public ArrayList<Geometry> getGeometryList() {
         return geometries;
     }
 
-    public void init()  {
+    public void init() {
         postProcessor.init();
         depthFbo.init();
     }
 
-    public void addComponent(RenderComponent cmp)  {
+    public void addComponent(RenderComponent cmp) {
         components.add(cmp);
         cmp.renderManager = this;
         cmp.init();
     }
 
-    public void removeComponent(RenderComponent cmp)  {
+    public void removeComponent(RenderComponent cmp) {
         components.remove(cmp);
-        if (cmp != null)
+        if (cmp != null) {
             cmp.renderManager = null;
-         
+        }
     }
 
-    public static float getElapsedTime()  {
+    public static float getElapsedTime() {
         return elapsedTime;
     }
 
-    public static void setElapsedTime(float value)  {
+    public static void setElapsedTime(float value) {
         elapsedTime = value;
     }
 
-    public void addGeometry(Geometry geom)  {
+    public void addGeometry(Geometry geom) {
         if (!geometries.contains(geom)) {
             geometries.add(geom);
         }
     }
 
-    public void removeGeometry(Geometry geom)  {
+    public void removeGeometry(Geometry geom) {
         if (geometries.contains(geom)) {
             geometries.remove(geom);
         }
     }
 
-    public void saveScreenToTexture(Camera cam, Texture toSaveTo)  {
+    public void saveScreenToTexture(Camera cam, Texture toSaveTo) {
         toSaveTo.use();
-        getRenderer().copyScreenToTexture2D(cam.getWidth(),cam.getHeight());
+        getRenderer().copyScreenToTexture2D(cam.getWidth(), cam.getHeight());
         Texture2D.clear();
     }
 
@@ -146,11 +136,11 @@ public class RenderManager {
             depthFbo.setHeight(cam.getHeight());
             depthFbo.init();
         }
-         
+
         depthFbo.capture();
         renderer.clear(true, true, false);
-        renderBucketDepth(env,cam,ApexEngine.Rendering.RenderManager.Bucket.Opaque,DepthRenderMode.Depth);
-        renderBucketDepth(env,cam,ApexEngine.Rendering.RenderManager.Bucket.Transparent,DepthRenderMode.Depth);
+        renderBucketDepth(env, cam, ApexEngine.Rendering.RenderManager.Bucket.Opaque, DepthRenderMode.Depth);
+        renderBucketDepth(env, cam, ApexEngine.Rendering.RenderManager.Bucket.Transparent, DepthRenderMode.Depth);
         depthFbo.release();
 
         depthTexture = depthFbo.getColorTexture();
@@ -192,25 +182,25 @@ public class RenderManager {
         }
     }
 
-    public void renderBucketNormals(Environment env, Camera cam, ApexEngine.Rendering.RenderManager.Bucket bucket)  {
-        for (int i = 0; i < geometries.size(); i++) {
-            if (geometries.get(i).getAttachedToRoot() && geometries.get(i).getMaterial().getBucket() == bucket) {
-                if (geometries.get(i).getNormalsShader() == null) {
-                    if (geometries.get(i).getShader() == null) {
-                        geometries.get(i).setDefaultShader();
+    public void renderBucketNormals(Environment env, Camera cam, ApexEngine.Rendering.RenderManager.Bucket bucket) {
+        for (Geometry geom : geometries) {
+            if (geom.getAttachedToRoot() && geom.getMaterial().getBucket() == bucket) {
+                if (geom.getNormalsShader() == null) {
+                    if (geom.getShader() == null) {
+                        geom.setDefaultShader();
                     }
-                     
-                    ShaderProperties p = new ShaderProperties(geometries.get(i).getShaderProperties());
-                    p.setProperty("NORMALS",true);
-                    geometries.get(i).setNormalsShader(ShaderManager.getShader(geometries.get(i).getShader().getClass(),p));
+
+                    ShaderProperties p = new ShaderProperties(geom.getShaderProperties());
+                    p.setProperty("NORMALS", true);
+                    geom.setNormalsShader(ShaderManager.getShader(geom.getShader().getClass(), p));
                 }
-                 
-                geometries.get(i).getNormalsShader().use();
-                geometries.get(i).getNormalsShader().applyMaterial(geometries.get(i).getMaterial());
-                geometries.get(i).getNormalsShader().setTransforms(geometries.get(i).getWorldMatrix(),cam.getViewMatrix(),cam.getProjectionMatrix());
-                geometries.get(i).getNormalsShader().update(env,cam,geometries.get(i).getMesh());
-                geometries.get(i).getNormalsShader().render(geometries.get(i).getMesh());
-                geometries.get(i).getNormalsShader().end();
+
+                geom.getNormalsShader().use();
+                geom.getNormalsShader().applyMaterial(geom.getMaterial());
+                geom.getNormalsShader().setTransforms(geom.getWorldMatrix(), cam.getViewMatrix(), cam.getProjectionMatrix());
+                geom.getNormalsShader().update(env, cam, geom.getMesh());
+                geom.getNormalsShader().render(geom.getMesh());
+                geom.getNormalsShader().end();
 
                 Shader.clear();
             }
@@ -218,7 +208,7 @@ public class RenderManager {
     }
 
     public void render(Environment env, Camera cam) {
-        renderer.viewport(0,0,cam.getWidth(),cam.getHeight());
+        renderer.viewport(0, 0, cam.getWidth(), cam.getHeight());
         renderer.clearColor(backgroundColor.x, backgroundColor.y, backgroundColor.z, backgroundColor.w);
         renderer.clear(true, true, false);
 
@@ -227,12 +217,12 @@ public class RenderManager {
             rc.update();
         }
 
-        postProcessor.capture();
-        renderBucket(env,cam,ApexEngine.Rendering.RenderManager.Bucket.Sky);
-        renderBucket(env,cam,ApexEngine.Rendering.RenderManager.Bucket.Opaque);
-        renderBucket(env,cam,ApexEngine.Rendering.RenderManager.Bucket.Transparent);
-        renderBucket(env,cam,ApexEngine.Rendering.RenderManager.Bucket.Particle);
-        postProcessor.release();
+       // postProcessor.capture();
+        renderBucket(env, cam, ApexEngine.Rendering.RenderManager.Bucket.Sky);
+        renderBucket(env, cam, ApexEngine.Rendering.RenderManager.Bucket.Opaque);
+        renderBucket(env, cam, ApexEngine.Rendering.RenderManager.Bucket.Transparent);
+        renderBucket(env, cam, ApexEngine.Rendering.RenderManager.Bucket.Particle);
+      //  postProcessor.release();
     }
 }
 

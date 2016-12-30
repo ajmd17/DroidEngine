@@ -1,60 +1,55 @@
 package ApexEngine.Math;
 
-import ApexEngine.Math.Color4f;
-import ApexEngine.Math.Vector3f;
-import ApexEngine.Math.Vector4f;
-
-public class Color4f  extends Vector4f 
-{
-    public Color4f()  {
+public class Color4f extends Vector4f {
+    public Color4f() {
         super();
     }
 
-    public Color4f(float r, float g, float b, float a)  {
+    public Color4f(float r, float g, float b, float a) {
         super(r, g, b, a);
     }
 
-    public Color4f(float rgba)  {
+    public Color4f(float rgba) {
         super(rgba);
     }
 
-    public Color4f(Color4f other)  {
+    public Color4f(Color4f other) {
         super(other);
     }
 
-    public Color4f(Vector3f other)  {
+    public Color4f(Vector3f other) {
         super(other);
     }
 
-    public float getR()  {
+    public float getR() {
         return x;
     }
 
-    public void setR(float value)  {
+    public void setR(float value) {
         x = value;
     }
 
-    public float getG()  {
+    public float getG() {
         return y;
     }
 
-    public void setG(float value)  {
+    public void setG(float value) {
         y = value;
     }
 
-    public float getB()  {
+    public float getB() {
         return z;
     }
 
-    public void setB(float value)  {
+    public void setB(float value) {
         z = value;
     }
 
-    public float getA()  {
+    public float getA() {
         return w;
     }
 
-    public void setA(float value)  {
+    public void setA(float value) {
         w = value;
     }
 

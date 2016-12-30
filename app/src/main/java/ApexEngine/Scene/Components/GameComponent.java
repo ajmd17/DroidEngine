@@ -5,17 +5,14 @@
 package ApexEngine.Scene.Components;
 
 import ApexEngine.Rendering.Camera;
-import ApexEngine.Scene.Components.EngineComponent;
 import ApexEngine.Scene.Node;
 
-public abstract class GameComponent   implements EngineComponent
-{
+public abstract class GameComponent implements EngineComponent {
     public Node rootNode = new Node("GameComponent Node");
     public Camera cam;
-    public abstract void update()  ;
 
-    public abstract void init()  ;
-
+    public abstract void update();
+    public abstract void init();
 }
 
 

@@ -1,7 +1,7 @@
 package ApexEngine.Assets.Apx;
 
 public class ApxExporter {
-	public static final String TOKEN_FACES = "faces";
+    public static final String TOKEN_FACES = "faces";
     public static final String TOKEN_FACE = "face";
     public static final String TOKEN_VERTEX = "vertex";
     public static final String TOKEN_VERTICES = "vertices";

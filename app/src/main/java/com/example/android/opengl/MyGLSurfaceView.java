@@ -15,13 +15,14 @@
  */
 package com.example.android.opengl;
 
-import ApexEngine.Input.InputManager.MouseButton;
-import ApexEngine.Math.Vector3f;
-import ApexEngine.Rendering.Cameras.DefaultCamera;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
 import android.view.View;
+
+import ApexEngine.Input.InputManager.MouseButton;
+import ApexEngine.Math.Vector3f;
+import ApexEngine.Rendering.Cameras.DefaultCamera;
 
 /**
  * A view container where OpenGL ES graphics can be drawn on screen. This view
@@ -30,62 +31,62 @@ import android.view.View;
  */
 public class MyGLSurfaceView extends GLSurfaceView {
 
-	private final MyGLRenderer mRenderer;
+    private final MyGLRenderer mRenderer;
 
-	public MyGLRenderer getRenderer() {
-		return mRenderer;
-	}
+    public MyGLRenderer getRenderer() {
+        return mRenderer;
+    }
 
-	public MyGLSurfaceView(Context context) {
-		super(context);
+    public MyGLSurfaceView(Context context) {
+        super(context);
 
-		setEGLContextClientVersion(2);
-		super.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
+        setEGLContextClientVersion(2);
+        super.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
 
-		mRenderer = new MyGLRenderer();
-		setRenderer(mRenderer);
+        mRenderer = new MyGLRenderer();
+        setRenderer(mRenderer);
 
-		setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
+        setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
 
-		this.setOnTouchListener(new OnTouchListener() {
-			
+        this.setOnTouchListener(new OnTouchListener() {
 
-			float prevX = 0f, prevY = 0f;
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				float x = event.getX();
-				float y = event.getY();
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					getRenderer().getGame().getInputManager().mouseButtonDown(MouseButton.Left);
-				}
-				else if (event.getAction() == MotionEvent.ACTION_UP) {
-					getRenderer().getGame().getInputManager().mouseButtonUp(MouseButton.Left);
-				}
-				
-				
-				if (event.getAction() == MotionEvent.ACTION_MOVE) {
-					getRenderer().getGame().getInputManager().MOUSE_X = (int) x
-							- (getRenderer().getGame().getInputManager().SCREEN_WIDTH / 2);
-					getRenderer().getGame().getInputManager().MOUSE_Y = (int)y
-							- (getRenderer().getGame().getInputManager().SCREEN_HEIGHT / 2);
-					if (getRenderer().getGame().getCamera() instanceof DefaultCamera) {
-						float dx = x - prevX;
-						float dy = y - prevY;
-						getRenderer().getGame().getCamera().rotate(Vector3f.UnitY, dx * 0.08f);
-						getRenderer().getGame().getCamera().rotate(getRenderer().getGame().getCamera().getDirection().cross(Vector3f.UnitY), dy * 0.08f);
-					}
-				}
-				prevX = x;
-				prevY = y;
-				return true;
-			}
-		});
-	}
 
-	@Override
-	public boolean onTouchEvent(MotionEvent e) {
+            float prevX = 0f, prevY = 0f;
 
-		return false;
-	}
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                float x = event.getX();
+                float y = event.getY();
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    getRenderer().getGame().getInputManager().mouseButtonDown(MouseButton.Left);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    getRenderer().getGame().getInputManager().mouseButtonUp(MouseButton.Left);
+                }
+
+
+                if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    getRenderer().getGame().getInputManager().MOUSE_X = (int) x
+                            - (getRenderer().getGame().getInputManager().SCREEN_WIDTH / 2);
+                    getRenderer().getGame().getInputManager().MOUSE_Y = (int) y
+                            - (getRenderer().getGame().getInputManager().SCREEN_HEIGHT / 2);
+                    if (getRenderer().getGame().getCamera() instanceof DefaultCamera) {
+                        float dx = x - prevX;
+                        float dy = y - prevY;
+                        getRenderer().getGame().getCamera().rotate(Vector3f.UnitY, dx * 0.08f);
+                        getRenderer().getGame().getCamera().rotate(getRenderer().getGame().getCamera().getDirection().cross(Vector3f.UnitY), dy * 0.08f);
+                    }
+                }
+                prevX = x;
+                prevY = y;
+                return true;
+            }
+        });
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent e) {
+
+        return false;
+    }
 
 }
