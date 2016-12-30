@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<model>
+  <node name="lightmap_scene">
+    <translation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <rotation x="0" y="0" z="0" w="1" />
+    <geom name="None">
+      <translation x="-4.125629" y="0.05080128" z="9.566416">
+        <scale x="1" y="1" z="1" />
+        <rotation x="0" y="0" z="0" w="0" />
+      </translation>
+      <mesh has_positions="True" has_normals="True" has_texcoords="True">
+        <vertices>
+          <position x="1.297058" y="-0.04883" z="-5.3041" />
+          <position x="2.001224" y="3.631329" z="-3.604087" />
+          <position x="1.642245" y="-0.04883" z="-5.40881" />
+          <position x="2.001224" y="-0.04883" z="-5.444166" />
+          <position x="2.360205" y="-0.04883" z="-5.40881" />
+          <position x="0.978932" y="-0.04883" z="-5.134058" />
+          <position x="0.700093" y="-0.04883" z="-4.905221" />
+          <position x="0.471255" y="-0.04883" z="-4.626382" />
+          <position x="0.301213" y="-0.04883" z="-4.308257" />
+          <position x="0.196501" y="-0.04883" z="-3.96307" />
+          <position x="0.161144" y="-0.04883" z="-3.604089" />
+          <position x="0.1965" y="-0.04883" z="-3.245107" />
+          <position x="0.301211" y="-0.04883" z="-2.89992" />
+          <position x="0.471253" y="-0.04883" z="-2.581795" />
+          <position x="0.70009" y="-0.04883" z="-2.302955" />
+          <position x="0.978929" y="-0.04883" z="-2.074117" />
+          <position x="1.297055" y="-0.04883" z="-1.904075" />
+          <position x="1.642241" y="-0.04883" z="-1.799364" />
+          <position x="2.001223" y="-0.04883" z="-1.764007" />
+          <position x="2.360205" y="-0.04883" z="-1.799364" />
+          <position x="2.705391" y="-0.04883" z="-1.904075" />
+          <position x="3.023517" y="-0.04883" z="-2.074117" />
+          <position x="3.302356" y="-0.04883" z="-2.302954" />
+          <position x="3.531194" y="-0.04883" z="-2.581794" />
+          <position x="3.701235" y="-0.04883" z="-2.899919" />
+          <position x="3.805947" y="-0.04883" z="-3.245105" />
+          <position x="3.841303" y="-0.04883" z="-3.604087" />
+          <position x="3.805946" y="-0.04883" z="-3.963069" />
+          <position x="3.701235" y="-0.04883" z="-4.308255" />
+          <position x="3.531194" y="-0.04883" z="-4.62638" />
+          <position x="3.302356" y="-0.04883" z="-4.90522" />
+          <position x="3.023517" y="-0.04883" z="-5.134057" />
+          <position x="2.705392" y="-0.04883" z="-5.304099" />
+          <normal x="-0.3307" y="-0.5033" z="-0.7983" />
+          <normal x="0" y="1" z="0" />
+          <normal x="-0.1686" y="-0.5033" z="-0.8475" />
+          <normal x="0" y="-0.5033" z="-0.8641" />
+          <normal x="0.1686" y="-0.5033" z="-0.8475" />
+          <normal x="-0.4801" y="-0.5033" z="-0.7185" />
+          <normal x="-0.611" y="-0.5033" z="-0.611" />
+          <normal x="-0.7185" y="-0.5033" z="-0.4801" />
+          <normal x="-0.7983" y="-0.5033" z="-0.3307" />
+          <normal x="-0.8475" y="-0.5033" z="-0.1686" />
+          <normal x="-0.8641" y="-0.5033" z="0" />
+          <normal x="-0.8475" y="-0.5033" z="0.1686" />
+          <normal x="-0.7983" y="-0.5033" z="0.3307" />
+          <normal x="-0.7185" y="-0.5033" z="0.4801" />
+          <normal x="-0.611" y="-0.5033" z="0.611" />
+          <normal x="-0.4801" y="-0.5033" z="0.7185" />
+          <normal x="-0.3307" y="-0.5033" z="0.7983" />
+          <normal x="-0.1686" y="-0.5033" z="0.8475" />
+          <normal x="0" y="-0.5033" z="0.8641" />
+          <normal x="0.1686" y="-0.5033" z="0.8475" />
+          <normal x="0.3307" y="-0.5033" z="0.7983" />
+          <normal x="0.4801" y="-0.5033" z="0.7185" />
+          <normal x="0.611" y="-0.5033" z="0.611" />
+          <normal x="0.7185" y="-0.5033" z="0.4801" />
+          <normal x="0.7983" y="-0.5033" z="0.3307" />
+          <normal x="0.8475" y="-0.5033" z="0.1686" />
+          <normal x="0.8641" y="-0.5033" z="0" />
+          <normal x="0.8475" y="-0.5033" z="-0.1686" />
+          <normal x="0.7983" y="-0.5033" z="-0.3307" />
+          <normal x="0.7185" y="-0.5033" z="-0.4801" />
+          <normal x="0.611" y="-0.5033" z="-0.611" />
+          <normal x="0.4801" y="-0.5033" z="-0.7185" />
+          <normal x="0.3307" y="-0.5033" z="-0.7983" />
+          <uv0 x="0.829853" y="0.641126" />
+          <uv0 x="0.860063" y="0.848697" />
+          <uv0 x="0.812998" y="0.645161" />
+          <uv0 x="0.795827" y="0.650462" />
+          <uv0 x="0.779001" y="0.656826" />
+          <uv0 x="0.845745" y="0.638513" />
+          <uv0 x="0.860063" y="0.637421" />
+          <uv0 x="0.845745" y="0.423" />
+          <uv0 x="0.860063" y="0.212816" />
+          <uv0 x="0.860063" y="0.424092" />
+          <uv0 x="0.829853" y="0.420387" />
+          <uv0 x="0.812998" y="0.416353" />
+          <uv0 x="0.795827" y="0.411051" />
+          <uv0 x="0.779001" y="0.404687" />
+          <uv0 x="0.763166" y="0.397505" />
+          <uv0 x="0.74893" y="0.38978" />
+          <uv0 x="0.736841" y="0.38181" />
+          <uv0 x="0.74893" y="0.034825" />
+          <uv0 x="0.860063" y="0.211789" />
+          <uv0 x="0.736841" y="0.042795" />
+          <uv0 x="0.763166" y="0.0271" />
+          <uv0 x="0.779001" y="0.019918" />
+          <uv0 x="0.795827" y="0.013554" />
+          <uv0 x="0.812998" y="0.008253" />
+          <uv0 x="0.829853" y="0.004218" />
+          <uv0 x="0.845745" y="0.001605" />
+          <uv0 x="0.860063" y="0.000514" />
+          <uv0 x="0.74893" y="0.45943" />
+          <uv0 x="0.860063" y="0.636394" />
+          <uv0 x="0.736841" y="0.4674" />
+          <uv0 x="0.763166" y="0.451706" />
+          <uv0 x="0.779001" y="0.444523" />
+          <uv0 x="0.795827" y="0.438159" />
+          <uv0 x="0.812998" y="0.432858" />
+          <uv0 x="0.829853" y="0.428823" />
+          <uv0 x="0.845745" y="0.42621" />
+          <uv0 x="0.860063" y="0.425119" />
+          <uv0 x="0.74893" y="0.671733" />
+          <uv0 x="0.736841" y="0.679703" />
+          <uv0 x="0.763166" y="0.664008" />
+          <uv0 x="0.033637" y="0.92536" />
+          <uv0 x="0.020905" y="0.912258" />
+          <uv0 x="0.010902" y="0.896853" />
+          <uv0 x="0.004012" y="0.879735" />
+          <uv0 x="0.000499" y="0.861563" />
+          <uv0 x="0.000499" y="0.843035" />
+          <uv0 x="0.004012" y="0.824863" />
+          <uv0 x="0.010902" y="0.807745" />
+          <uv0 x="0.020905" y="0.792339" />
+          <uv0 x="0.033637" y="0.779238" />
+          <uv0 x="0.048608" y="0.768944" />
+          <uv0 x="0.065242" y="0.761854" />
+          <uv0 x="0.082901" y="0.758239" />
+          <uv0 x="0.100907" y="0.758239" />
+          <uv0 x="0.118566" y="0.761854" />
+          <uv0 x="0.135201" y="0.768944" />
+          <uv0 x="0.150171" y="0.779238" />
+          <uv0 x="0.162903" y="0.792339" />
+          <uv0 x="0.172906" y="0.807745" />
+          <uv0 x="0.179796" y="0.824863" />
+          <uv0 x="0.183309" y="0.843035" />
+          <uv0 x="0.183309" y="0.861563" />
+          <uv0 x="0.179796" y="0.879735" />
+          <uv0 x="0.172906" y="0.896853" />
+          <uv0 x="0.162903" y="0.912258" />
+          <uv0 x="0.150171" y="0.925359" />
+          <uv0 x="0.135201" y="0.935653" />
+          <uv0 x="0.118566" y="0.942744" />
+          <uv0 x="0.100907" y="0.946358" />
+          <uv0 x="0.082901" y="0.946358" />
+          <uv0 x="0.065242" y="0.942744" />
+          <uv0 x="0.048608" y="0.935653" />
+        </vertices>
+        <faces>
+          <face i0="0/0/0" i1="1/1/1" i2="2/2/2" />
+          <face i0="3/3/3" i1="1/1/1" i2="4/4/4" />
+          <face i0="5/5/5" i1="1/1/1" i2="0/0/0" />
+          <face i0="6/6/6" i1="1/1/1" i2="5/5/5" />
+          <face i0="7/7/7" i1="1/1/8" i2="6/6/9" />
+          <face i0="8/8/10" i1="1/1/8" i2="7/7/7" />
+          <face i0="9/9/11" i1="1/1/8" i2="8/8/10" />
+          <face i0="10/10/12" i1="1/1/8" i2="9/9/11" />
+          <face i0="11/11/13" i1="1/1/8" i2="10/10/12" />
+          <face i0="12/12/14" i1="1/1/8" i2="11/11/13" />
+          <face i0="13/13/15" i1="1/1/8" i2="12/12/14" />
+          <face i0="14/14/16" i1="1/1/8" i2="13/13/15" />
+          <face i0="15/15/17" i1="1/1/18" i2="14/14/19" />
+          <face i0="16/16/20" i1="1/1/18" i2="15/15/17" />
+          <face i0="17/17/21" i1="1/1/18" i2="16/16/20" />
+          <face i0="18/18/22" i1="1/1/18" i2="17/17/21" />
+          <face i0="19/19/23" i1="1/1/18" i2="18/18/22" />
+          <face i0="20/20/24" i1="1/1/18" i2="19/19/23" />
+          <face i0="21/21/25" i1="1/1/18" i2="20/20/24" />
+          <face i0="22/22/26" i1="1/1/18" i2="21/21/25" />
+          <face i0="23/23/27" i1="1/1/28" i2="22/22/29" />
+          <face i0="24/24/30" i1="1/1/28" i2="23/23/27" />
+          <face i0="25/25/31" i1="1/1/28" i2="24/24/30" />
+          <face i0="26/26/32" i1="1/1/28" i2="25/25/31" />
+          <face i0="27/27/33" i1="1/1/28" i2="26/26/32" />
+          <face i0="28/28/34" i1="1/1/28" i2="27/27/33" />
+          <face i0="29/29/35" i1="1/1/28" i2="28/28/34" />
+          <face i0="30/30/36" i1="1/1/28" i2="29/29/35" />
+          <face i0="31/31/37" i1="1/1/1" i2="30/30/38" />
+          <face i0="32/32/39" i1="1/1/1" i2="31/31/37" />
+          <face i0="2/2/2" i1="1/1/1" i2="3/3/3" />
+          <face i0="4/4/4" i1="1/1/1" i2="32/32/39" />
+          <face i0="3/3/40" i1="4/4/41" i2="32/32/42" />
+          <face i0="3/3/40" i1="32/32/42" i2="31/31/43" />
+          <face i0="3/3/40" i1="31/31/43" i2="30/30/44" />
+          <face i0="3/3/40" i1="30/30/44" i2="29/29/45" />
+          <face i0="3/3/40" i1="29/29/45" i2="28/28/46" />
+          <face i0="3/3/40" i1="28/28/46" i2="27/27/47" />
+          <face i0="3/3/40" i1="27/27/47" i2="26/26/48" />
+          <face i0="3/3/40" i1="26/26/48" i2="25/25/49" />
+          <face i0="3/3/40" i1="25/25/49" i2="24/24/50" />
+          <face i0="3/3/40" i1="24/24/50" i2="23/23/51" />
+          <face i0="3/3/40" i1="23/23/51" i2="22/22/52" />
+          <face i0="3/3/40" i1="22/22/52" i2="21/21/53" />
+          <face i0="3/3/40" i1="21/21/53" i2="20/20/54" />
+          <face i0="3/3/40" i1="20/20/54" i2="19/19/55" />
+          <face i0="3/3/40" i1="19/19/55" i2="18/18/56" />
+          <face i0="3/3/40" i1="18/18/56" i2="17/17/57" />
+          <face i0="3/3/40" i1="17/17/57" i2="16/16/58" />
+          <face i0="3/3/40" i1="16/16/58" i2="15/15/59" />
+          <face i0="3/3/40" i1="15/15/59" i2="14/14/60" />
+          <face i0="3/3/40" i1="14/14/60" i2="13/13/61" />
+          <face i0="3/3/40" i1="13/13/61" i2="12/12/62" />
+          <face i0="3/3/40" i1="12/12/62" i2="11/11/63" />
+          <face i0="3/3/40" i1="11/11/63" i2="10/10/64" />
+          <face i0="3/3/40" i1="10/10/64" i2="9/9/65" />
+          <face i0="3/3/40" i1="9/9/65" i2="8/8/66" />
+          <face i0="3/3/40" i1="8/8/66" i2="7/7/67" />
+          <face i0="3/3/40" i1="7/7/67" i2="6/6/68" />
+          <face i0="3/3/40" i1="6/6/68" i2="5/5/69" />
+          <face i0="3/3/40" i1="5/5/69" i2="0/0/70" />
+          <face i0="3/3/40" i1="0/0/70" i2="2/2/71" />
+        </faces>
+      </mesh>
+      <material>
+        <material_property name="diffuse" type="vec4" value="[1, 1, 1, 1]" />
+        <material_property name="specular" type="vec4" value="[1, 1, 1, 1]" />
+        <material_property name="ambient" type="vec4" value="[0, 0, 0, 0]" />
+        <material_property name="spec_technique" type="int" value="1" />
+        <material_property name="per_pixel_lighting" type="int" value="1" />
+        <material_property name="shininess" type="float" value="0.5" />
+        <material_property name="roughness" type="float" value="0.2" />
+        <material_property name="metalness" type="float" value="0" />
+        <material_property name="spec_exponent" type="float" value="0" />
+        <material_property name="blendmode" type="int" value="0" />
+        <material_property name="cast_shadows" type="int" value="1" />
+        <material_property name="matname" type="string" value="None" />
+      </material>
+    </geom>
+    <geom name="None">
+      <translation x="4.008091" y="0.05051041" z="-2.586343">
+        <scale x="1" y="1" z="1" />
+        <rotation x="0" y="0" z="0" w="0" />
+      </translation>
+      <mesh has_positions="True" has_normals="True" has_texcoords="True">
+        <vertices>
+          <position x="1.293349" y="3.221124" z="5.234864" />
+          <position x="1.293349" y="3.221124" z="2.319181" />
+          <position x="1.293349" y="0.305441" z="2.319181" />
+          <position x="1.293349" y="0.305441" z="5.234864" />
+          <position x="4.209032" y="3.221124" z="2.319181" />
+          <position x="4.209032" y="0.305441" z="2.319181" />
+          <position x="4.209032" y="3.221124" z="5.234864" />
+          <position x="4.209032" y="0.305441" z="5.234864" />
+          <normal x="-1" y="0" z="0" />
+          <normal x="0" y="0" z="-1" />
+          <normal x="1" y="0" z="0" />
+          <normal x="0" y="0" z="1" />
+          <normal x="0" y="-1" z="0" />
+          <normal x="0" y="1" z="0" />
+          <uv0 x="0.477376" y="0.908002" />
+          <uv0 x="0.477376" y="0.758239" />
+          <uv0 x="0.615815" y="0.758239" />
+          <uv0 x="0.615815" y="0.908002" />
+          <uv0 x="0.736841" y="0.999486" />
+          <uv0 x="0.736841" y="0.849724" />
+          <uv0 x="0.875281" y="0.849724" />
+          <uv0 x="0.875281" y="0.999486" />
+          <uv0 x="0.861061" y="0.301065" />
+          <uv0 x="0.861061" y="0.151303" />
+          <uv0 x="0.999501" y="0.151303" />
+          <uv0 x="0.999501" y="0.301065" />
+          <uv0 x="0.999501" y="0.000514" />
+          <uv0 x="0.999501" y="0.150276" />
+          <uv0 x="0.861061" y="0.150276" />
+          <uv0 x="0.861061" y="0.000514" />
+          <uv0 x="0.184307" y="0.758239" />
+          <uv0 x="0.329843" y="0.758239" />
+          <uv0 x="0.329843" y="0.908002" />
+          <uv0 x="0.184307" y="0.908002" />
+          <uv0 x="0.330842" y="0.908002" />
+          <uv0 x="0.330842" y="0.758239" />
+          <uv0 x="0.476377" y="0.758239" />
+          <uv0 x="0.476377" y="0.908002" />
+        </vertices>
+        <faces>
+          <face i0="0/0/0" i1="1/0/1" i2="2/0/2" />
+          <face i0="0/0/0" i1="2/0/2" i2="3/0/3" />
+          <face i0="1/1/4" i1="4/1/5" i2="5/1/6" />
+          <face i0="1/1/4" i1="5/1/6" i2="2/1/7" />
+          <face i0="4/2/8" i1="6/2/9" i2="7/2/10" />
+          <face i0="4/2/8" i1="7/2/10" i2="5/2/11" />
+          <face i0="6/3/12" i1="0/3/13" i2="3/3/14" />
+          <face i0="6/3/12" i1="3/3/14" i2="7/3/15" />
+          <face i0="3/4/16" i1="2/4/17" i2="5/4/18" />
+          <face i0="3/4/16" i1="5/4/18" i2="7/4/19" />
+          <face i0="6/5/20" i1="4/5/21" i2="1/5/22" />
+          <face i0="6/5/20" i1="1/5/22" i2="0/5/23" />
+        </faces>
+      </mesh>
+      <material>
+        <material_property name="diffuse" type="vec4" value="[1, 1, 1, 1]" />
+        <material_property name="specular" type="vec4" value="[1, 1, 1, 1]" />
+        <material_property name="ambient" type="vec4" value="[0, 0, 0, 0]" />
+        <material_property name="spec_technique" type="int" value="1" />
+        <material_property name="per_pixel_lighting" type="int" value="1" />
+        <material_property name="shininess" type="float" value="0.5" />
+        <material_property name="roughness" type="float" value="0.2" />
+        <material_property name="metalness" type="float" value="0" />
+        <material_property name="spec_exponent" type="float" value="0" />
+        <material_property name="blendmode" type="int" value="0" />
+        <material_property name="cast_shadows" type="int" value="1" />
+        <material_property name="matname" type="string" value="None" />
+      </material>
+    </geom>
+    <geom name="None">
+      <translation x="0" y="0" z="0">
+        <scale x="1" y="1" z="1" />
+        <rotation x="0" y="0" z="0" w="0" />
+      </translation>
+      <mesh has_positions="True" has_normals="True" has_texcoords="True">
+        <vertices>
+          <position x="-12.84896" y="0" z="12.84896" />
+          <position x="12.84896" y="0" z="12.84896" />
+          <position x="12.84896" y="0" z="-12.84896" />
+          <position x="-12.84896" y="0" z="-12.84896" />
+          <normal x="0" y="1" z="0" />
+          <uv0 x="0.000499" y="0.757212" />
+          <uv0 x="0.000499" y="0.000514" />
+          <uv0 x="0.735843" y="0.000514" />
+          <uv0 x="0.735843" y="0.757212" />
+        </vertices>
+        <faces>
+          <face i0="0/0/0" i1="1/0/1" i2="2/0/2" />
+          <face i0="0/0/0" i1="2/0/2" i2="3/0/3" />
+        </faces>
+      </mesh>
+      <material>
+        <material_property name="diffuse" type="vec4" value="[1, 1, 1, 1]" />
+        <material_property name="specular" type="vec4" value="[1, 1, 1, 1]" />
+        <material_property name="ambient" type="vec4" value="[0, 0, 0, 0]" />
+        <material_property name="spec_technique" type="int" value="1" />
+        <material_property name="per_pixel_lighting" type="int" value="1" />
+        <material_property name="shininess" type="float" value="0.5" />
+        <material_property name="roughness" type="float" value="0.2" />
+        <material_property name="metalness" type="float" value="0" />
+        <material_property name="spec_exponent" type="float" value="0" />
+        <material_property name="blendmode" type="int" value="0" />
+        <material_property name="cast_shadows" type="int" value="1" />
+        <material_property name="matname" type="string" value="None" />
+      </material>
+    </geom>
+    <geom name="None">
+      <translation x="0" y="0" z="0">
+        <scale x="1" y="1" z="1" />
+        <rotation x="0" y="0" z="0" w="0" />
+      </translation>
+      <mesh has_positions="True" has_normals="True" has_texcoords="True">
+        <vertices>
+          <position x="-1.429513" y="0.922099" z="-3.50543" />
+          <position x="-1.429513" y="0.922099" z="-1.50543" />
+          <position x="-3.429513" y="0.922099" z="-1.50543" />
+          <position x="-3.429513" y="0.922099" z="-3.50543" />
+          <position x="-1.429513" y="2.922099" z="-3.505429" />
+          <position x="-3.429513" y="2.922099" z="-3.50543" />
+          <position x="-3.429513" y="2.922099" z="-1.50543" />
+          <position x="-1.429513" y="2.922099" z="-1.505429" />
+          <normal x="0" y="-1" z="0" />
+          <normal x="0" y="1" z="0" />
+          <normal x="1" y="0" z="0" />
+          <normal x="0" y="0" z="1" />
+          <normal x="-1" y="0" z="0" />
+          <normal x="0" y="0" z="-1" />
+          <uv0 x="0.616813" y="0.964724" />
+          <uv0 x="0.616813" y="0.861995" />
+          <uv0 x="0.716643" y="0.861995" />
+          <uv0 x="0.716643" y="0.964724" />
+          <uv0 x="0.716643" y="0.758239" />
+          <uv0 x="0.716643" y="0.860968" />
+          <uv0 x="0.616813" y="0.860968" />
+          <uv0 x="0.616813" y="0.758239" />
+          <uv0 x="0.956023" y="0.71609" />
+          <uv0 x="0.861061" y="0.71609" />
+          <uv0 x="0.861061" y="0.613361" />
+          <uv0 x="0.956023" y="0.613361" />
+          <uv0 x="0.956023" y="0.612334" />
+          <uv0 x="0.861061" y="0.612334" />
+          <uv0 x="0.861061" y="0.509605" />
+          <uv0 x="0.956023" y="0.509605" />
+          <uv0 x="0.956023" y="0.508578" />
+          <uv0 x="0.861061" y="0.508578" />
+          <uv0 x="0.861061" y="0.405849" />
+          <uv0 x="0.956023" y="0.405849" />
+          <uv0 x="0.956023" y="0.404822" />
+          <uv0 x="0.861061" y="0.404822" />
+          <uv0 x="0.861061" y="0.302093" />
+          <uv0 x="0.956023" y="0.302093" />
+        </vertices>
+        <faces>
+          <face i0="0/0/0" i1="1/0/1" i2="2/0/2" />
+          <face i0="0/0/0" i1="2/0/2" i2="3/0/3" />
+          <face i0="4/1/4" i1="5/1/5" i2="6/1/6" />
+          <face i0="4/1/4" i1="6/1/6" i2="7/1/7" />
+          <face i0="0/2/8" i1="4/2/9" i2="7/2/10" />
+          <face i0="0/2/8" i1="7/2/10" i2="1/2/11" />
+          <face i0="1/3/12" i1="7/3/13" i2="6/3/14" />
+          <face i0="1/3/12" i1="6/3/14" i2="2/3/15" />
+          <face i0="2/4/16" i1="6/4/17" i2="5/4/18" />
+          <face i0="2/4/16" i1="5/4/18" i2="3/4/19" />
+          <face i0="4/5/20" i1="0/5/21" i2="3/5/22" />
+          <face i0="4/5/20" i1="3/5/22" i2="5/5/23" />
+        </faces>
+      </mesh>
+      <material>
+        <material_property name="diffuse" type="vec4" value="[1, 1, 1, 1]" />
+        <material_property name="specular" type="vec4" value="[1, 1, 1, 1]" />
+        <material_property name="ambient" type="vec4" value="[0, 0, 0, 0]" />
+        <material_property name="spec_technique" type="int" value="1" />
+        <material_property name="per_pixel_lighting" type="int" value="1" />
+        <material_property name="shininess" type="float" value="0.5" />
+        <material_property name="roughness" type="float" value="0.2" />
+        <material_property name="metalness" type="float" value="0" />
+        <material_property name="spec_exponent" type="float" value="0" />
+        <material_property name="blendmode" type="int" value="0" />
+        <material_property name="cast_shadows" type="int" value="1" />
+        <material_property name="matname" type="string" value="None" />
+      </material>
+    </geom>
+  </node>
+</model>
